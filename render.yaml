@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: make-another-choice
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: PREVIEW_USER
+        sync: false
+      - key: PREVIEW_PASS
+        sync: false
