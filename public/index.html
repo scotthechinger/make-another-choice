@@ -467,10 +467,66 @@ html.story{scroll-snap-type:y proximity;}
 @media(max-width:860px){.b5row{grid-template-columns:1fr;} .b5row .v3card{justify-self:center;}}
 .orbadge{left:40%;transform:translateX(-50%);white-space:nowrap;}
 @media(max-width:860px){.orbadge{left:30%;}}
+/* Option A: plain cards, larger textured 'another' */
+.hero .stack .pol .wash{display:none;}
+.orbadge{font-size:clamp(22px,2.3vw,32px);padding:9px 16px 10px;letter-spacing:.01em;background-color:var(--lav);background-image:var(--grain);background-size:110px;background-blend-mode:soft-light;box-shadow:3px 3px 0 var(--navy);transform:translateX(-50%) rotate(-2deg);}
+html.story{scroll-snap-type:none;} .beat{scroll-snap-align:none;}
+/* ---- story: textured bands ---- */
+#v3>.w{max-width:none;padding-left:0;padding-right:0;}
+#v3 .beat{padding-left:max(var(--gut),calc(50% - 590px));padding-right:max(var(--gutr),calc(50% - 590px));background:var(--cream);overflow:hidden;}
+#v3 .beat::before{content:"";position:absolute;inset:0;background-image:var(--tex);background-size:var(--texsize);mix-blend-mode:soft-light;opacity:.55;pointer-events:none;z-index:0;}
+#v3 .beat>*{position:relative;z-index:1;}
+#v3 .beat>.keepgo{position:absolute;}
+#v3 .beat.dark{background:var(--navy);color:var(--cream);}
+#v3 .beat.forest{background:var(--forest);color:var(--cream);}
+#v3 .beat.dark::before,#v3 .beat.forest::before{opacity:.9;}
+#v3 .beat.dark h2,#v3 .beat.forest h2,#v3 .beat.dark .lede,#v3 .beat.forest .lede,#v3 .beat.dark .prov,#v3 .beat.forest .prov,#v3 .beat.dark .keepgo,#v3 .beat.forest .keepgo,#v3 .beat.dark .beatlab,#v3 .beat.forest .beatlab{color:var(--cream);}
+#v3 .beat.dark .beatnum,#v3 .beat.forest .beatnum{color:var(--lime);}
+#v3 .beat.forest .bar{border-bottom-color:rgba(250,244,232,.22);}
+#v3 .beat.forest .bar .bt{background:rgba(250,244,232,.14);}
+#v3 .beat.forest .bt i{background:var(--lime);}
+#v3 .beat.forest .bar .bl,#v3 .beat.forest .bar .bv{color:var(--cream);}
+#v3 .beat.dark .cardacts .tab{background:var(--blush);}
+#v3 .beat{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding-top:48px;padding-bottom:110px;min-height:100vh;min-height:100svh;}
+#v3 .beat>*{width:100%;}
+#v3 .beat>.keepgo{width:auto;}
+@media(max-width:860px){#v3 .beat{min-height:0;padding-top:56px;padding-bottom:96px;}}
+/* ---- story bars: paper texture ---- */
+#v3 .bar{border-bottom:0;padding:7px 0;}
+#v3 .bar .bt{height:26px;background:rgba(250,244,232,.12);box-shadow:inset 0 0 0 1px rgba(250,244,232,.28);}
+#v3 .bt i{background-color:var(--lime);background-image:var(--grain);background-size:120px;background-blend-mode:multiply;box-shadow:3px 3px 0 rgba(8,24,33,.55);}
+#v3 .bar:nth-child(odd) .bt{transform:rotate(-.35deg);} #v3 .bar:nth-child(even) .bt{transform:rotate(.3deg);}
+#v3 .bar:first-child .bt i{background-color:var(--coral);}
+#v3 .bar .bl{letter-spacing:.02em;}
+#v3 .beat{min-height:70vh;min-height:70svh;padding-top:72px;padding-bottom:104px;}
+@media(max-width:860px){#v3 .beat{min-height:0;}}
+#v3 .beat:first-of-type{min-height:calc(70vh - var(--topH,64px));min-height:calc(70svh - var(--topH,64px));}
+/* ---- designed dropdowns (One dial, Receipt) ---- */
+select.srhide{position:absolute!important;width:1px;height:1px;opacity:0;pointer-events:none;overflow:hidden;clip:rect(0 0 0 0);}
+.cdd{position:relative;display:inline-block;text-align:left;vertical-align:middle;}
+.cddbtn{position:relative;isolation:isolate;display:inline-flex;align-items:center;gap:12px;background:#fffcf5;border:2px solid var(--navy);box-shadow:3px 3px 0 var(--navy);color:var(--navy);cursor:pointer;
+ font-family:'Neue Haas';font-weight:700;font-size:13.5px;line-height:1.2;padding:11px 14px;text-transform:none;letter-spacing:0;transform:rotate(-1deg);transition:transform .15s ease,background .15s ease;}
+.cdd+.cdd .cddbtn,.cdd.alt .cddbtn{transform:rotate(.9deg);}
+.cddbtn:hover,.cdd.open .cddbtn{background-color:var(--lime);transform:translate(-1px,-2px) rotate(-1deg);}
+.cddbtn .chev{width:12px;height:8px;flex:none;margin-left:auto;transition:transform .2s ease;}
+.cdd.open .cddbtn .chev{transform:rotate(180deg);}
+.cddmenu{display:none;position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%);min-width:min(340px,92vw);width:max-content;max-width:min(560px,92vw);max-height:min(62vh,520px);overflow:auto;
+ background:var(--cream);border:2px solid var(--navy);box-shadow:6px 6px 0 var(--navy);padding:14px;z-index:60;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px 12px;}
+.cddmenu::before{content:"";position:absolute;inset:0;background-image:var(--tex);background-size:var(--texsize);mix-blend-mode:soft-light;opacity:.5;pointer-events:none;}
+.cdd.open .cddmenu{display:grid;}
+.cddopt{position:relative;isolation:isolate;background:#fffcf5;border:2px solid var(--navy);box-shadow:3px 3px 0 var(--navy);padding:10px 12px;cursor:pointer;text-align:left;font-family:'Neue Haas';color:var(--navy);line-height:1.2;
+ transform:translate(var(--dx,0),var(--dy,0)) rotate(var(--r,0deg));transition:transform .15s ease,background .15s ease;}
+.cddopt:hover{background-color:var(--blush);transform:translate(calc(var(--dx,0px) - 1px),calc(var(--dy,0px) - 2px)) rotate(var(--r,0deg));}
+.cddopt.on{background-color:var(--lime);}
+.cddbtn::after,.cddopt::after{content:"";position:absolute;inset:0;background:var(--grain);background-size:96px;mix-blend-mode:multiply;opacity:.16;pointer-events:none;z-index:-1;}
+.cddopt b{display:block;font-weight:700;font-size:13px;margin-bottom:3px;}
+.cddopt span{font-size:11.5px;opacity:.88;font-variant-numeric:tabular-nums;}
+.rcp .cdd{display:block;width:100%;margin-top:10px;} .rcp .cddbtn{width:100%;} .rcp .cddmenu{left:0;transform:none;width:100%;max-width:none;}
+@media(max-width:860px){.cddmenu{position:fixed;left:16px;right:16px;top:auto;bottom:16px;transform:none;width:auto;max-width:none;max-height:70vh;}}
 </style></head><body>
 
 <div class="top"><div class="topin">
-  <div class="grp l"><div class="viewmenu"><button class="tab nv vtrig" aria-haspopup="true" aria-expanded="false" onclick="toggleMenu(this)">Choose your experience<svg class="chev" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></button><div class="vmenu"><button class="vrow on" data-g="V" data-name="Explore" onclick="setView('v1',this)"><b>Explore</b><span>Pick a line item, move one dial, see what the same money buys.</span></button><button class="vrow" data-g="V" data-name="The story" onclick="setView('v3',this)"><b>The story</b><span>Scroll the numbers one beat at a time.</span></button><button class="vrow" data-g="V" data-name="One dial" onclick="setView('v2',this)"><b>One dial</b><span>The whole trade on a single screen.</span></button><button class="vrow" data-g="V" data-name="Receipt" onclick="setView('v4',this)"><b>Receipt</b><span>The general fund, printed like a receipt.</span></button></div></div>
+  <div class="grp l"><div class="viewmenu"><button class="tab nv vtrig" aria-haspopup="true" aria-expanded="false" onclick="toggleMenu(this)">Choose your experience<svg class="chev" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></button><div class="vmenu"><button class="vrow on" data-g="V" data-name="Explore" onclick="setView('v1',this)"><b>Explore</b><span>Pick a line item, move one dial, see what we get for the same money.</span></button><button class="vrow" data-g="V" data-name="The story" onclick="setView('v3',this)"><b>The story</b><span>Scroll the numbers one beat at a time.</span></button><button class="vrow" data-g="V" data-name="One dial" onclick="setView('v2',this)"><b>One dial</b><span>The whole transaction on a single screen.</span></button><button class="vrow" data-g="V" data-name="Receipt" onclick="setView('v4',this)"><b>Receipt</b><span>The general fund, printed like a receipt.</span></button></div></div>
   </div>
   <button class="wordmark" onclick="setView('v1',document.querySelector('[data-g=V]'))"><svg class="wmsvg" viewBox="0 -0.3 422.4 26.4" fill="currentColor" role="img" aria-label="Make Another Choice"><path d="M11.9981 25.4087L4.92906 5.74054H4.71267V19.7703C4.71267 22.3791 4.92906 23.9841 5.78263 25.2344V25.4147H0V25.2344C0.859581 24.0202 1.06997 22.3791 1.06997 19.7703V5.8848C1.06997 3.63667 0.925702 2.03172 0 0.78142V0.601088H8.06683L14.7451 19.2354H14.9254L21.5256 0.601088H29.1656V0.78142C28.3061 2.06779 28.0957 3.45634 28.0957 5.92087V19.9507C28.0957 22.5955 28.3121 23.912 29.1656 25.2344V25.4147H22.1327V25.2344C23.0223 23.912 23.2027 22.5595 23.2027 19.9507V6.06514H23.0223L16.1697 25.4147H11.9921L11.9981 25.4087Z" transform="translate(0.00 0)"/><path d="M42.5402 0C36.3992 0 31.4197 4.96369 31.4197 11.0852V22.9614C31.4197 24.2224 32.447 25.2464 33.712 25.2464H40.5583C41.3902 25.2159 41.969 24.5548 41.9613 23.6759C41.9537 22.6442 41.3058 22.1436 40.4472 22.1054H39.393C36.403 22.1054 33.9765 19.6866 33.9765 16.7061H37.3307C39.8108 16.7061 41.8962 18.3683 42.5363 20.6343C43.1803 18.3683 45.2656 16.7061 47.742 16.7061H51.0961C51.0961 19.6866 48.6696 22.1054 45.6796 22.1054H44.6255C43.7668 22.1436 43.119 22.6442 43.1113 23.6759C43.1037 24.5548 43.6863 25.2159 44.5143 25.2464H51.3606C52.6256 25.2464 53.6529 24.2224 53.6529 22.9614V11.0852C53.6606 4.96369 48.6811 0 42.5402 0ZM42.5402 4.66564C43.6557 4.66564 44.5603 5.56743 44.5603 6.67939C44.5603 7.79135 43.6557 8.69315 42.5402 8.69315C41.4247 8.69315 40.52 7.79135 40.52 6.67939C40.52 5.56743 41.4247 4.66564 42.5402 4.66564ZM47.075 12.1322C47.075 14.6236 45.0663 16.645 42.5747 16.6832C42.5747 16.6832 42.5517 16.6832 42.5402 16.6832C42.5287 16.6832 42.5172 16.6832 42.5057 16.6832C40.014 16.6412 38.0053 14.6198 38.0053 12.1284V9.30835C40.3437 9.30835 42.2718 11.0623 42.5402 13.3244C42.8085 11.0623 44.7328 9.30835 47.075 9.30835V12.1322Z" transform="translate(0.15 0)"/><path d="M68.7123 10.6696L80.2415 25.3426V25.4147H73.7436L65.3521 14.3123L62.6051 17.3118V19.9507C62.6051 22.5595 62.8215 23.948 63.6751 25.2344V25.4147H56.5339V25.2344C57.3574 23.948 57.6039 22.5595 57.6039 19.9507V5.92087C57.6039 3.42027 57.3514 2.06779 56.5339 0.78142V0.601088H63.6751V0.78142C62.8155 2.06779 62.6051 3.42027 62.6051 5.92087V12.3467H62.7854L69.4276 4.8509C71.0326 3.06562 71.4654 1.88745 71.4654 0.78142V0.601088H78.853V0.78142C76.677 2.10385 75.2824 3.52847 73.1785 5.81267L68.7183 10.6696H68.7123Z" transform="translate(-0.34 0)"/><path d="M99.585 25.4147H80.9507V25.2344C81.8103 23.948 82.0207 22.5234 82.0207 19.8785V5.8848C82.0207 3.45634 81.7682 2.03172 80.9507 0.78142V0.601088H99.05V5.56021H98.8336C97.7997 4.34597 96.4773 3.84706 93.3335 3.84706H87.052V11.3068H91.8728C94.7281 11.3068 95.798 10.8439 96.7297 9.98434H96.9461V15.8391H96.7297C95.8702 14.9855 94.6619 14.5527 91.8728 14.5527H87.052V22.1567H93.9045C96.6877 22.1567 98.2626 21.7299 99.3686 19.9447H99.585V25.4147Z" transform="translate(-0.14 0)"/><path d="M295 695H355L573 156Q598 94 614.5 61.5Q631 29 653 3V0H516V3Q525 21 525 45Q525 86 497 154L471 218H166L140 152Q114 84 114 47Q114 22 124 3V0H4V3Q26 28 43.0 61.0Q60 94 83 153ZM451 270 319 600H315L186 270Z" transform="translate(111.55 25.41) scale(0.03570 -0.0357)" stroke="currentColor" stroke-width="42.0" stroke-linejoin="round" paint-order="stroke"/><path d="M246.988 25.1322C247.848 23.9541 248.058 22.2049 248.058 19.7764V2.0017L247.132 0.607133V0.498934H254.52L264.763 18.3458H264.979V5.95697C264.979 3.52851 264.763 1.85142 263.909 0.673255V0.492921H269.8V0.673255C268.91 1.85142 268.73 3.52851 268.73 5.95697V25.3066H263.338L252.019 5.84877H251.803V19.7704C251.803 22.1988 251.983 23.9481 252.873 25.1262V25.3066H246.982V25.1262L246.988 25.1322Z" transform="translate(-109.87 0)"/><path d="M272.114 12.9238C272.114 5.31978 277.434 0 284.894 0C292.354 0 297.673 5.31978 297.673 12.9238C297.673 20.5277 292.318 25.8115 284.894 25.8115C277.47 25.8115 272.114 20.5638 272.114 12.9238ZM292.215 12.9238C292.215 7.1772 289.54 3.39023 284.9 3.39023C280.259 3.39023 277.584 7.17119 277.584 12.9238C277.584 18.6763 280.259 22.3852 284.9 22.3852C289.54 22.3852 292.215 18.6703 292.215 12.9238Z" transform="translate(-110.59 0)"/><path d="M117.546 25.2345C118.544 23.9842 118.796 22.5956 118.796 19.9868V3.81708H116.548C113.441 3.81708 111.8 4.46026 110.982 5.71056H110.766V0.607176H131.864V5.71056H131.648C130.788 4.46026 129.183 3.81708 126.082 3.81708H123.834V19.9868C123.834 22.5956 124.086 23.9842 125.084 25.2345V25.4148H117.552V25.2345H117.546Z" transform="translate(77.92 0)"/><path d="M157.243 0.781433C156.42 2.0678 156.173 3.42029 156.173 5.92088V20.0589C156.173 22.5595 156.426 23.948 157.243 25.2344V25.4147H150.066V25.2344C150.926 23.948 151.136 22.5595 151.136 20.0589V14.5948H139.607V20.0589C139.607 22.5595 139.823 23.948 140.677 25.2344V25.4147H133.5V25.2344C134.323 23.948 134.57 22.5595 134.57 20.0589V5.92088C134.57 3.42029 134.317 2.0678 133.5 0.781433V0.601102H140.677V0.781433C139.817 2.0678 139.607 3.42029 139.607 5.92088V11.3489H151.136V5.92088C151.136 3.42029 150.92 2.0678 150.066 0.781433V0.601102H157.243V0.781433Z" transform="translate(77.78 0)"/><path d="M99.585 25.4147H80.9507V25.2344C81.8103 23.948 82.0207 22.5234 82.0207 19.8785V5.8848C82.0207 3.45634 81.7682 2.03172 80.9507 0.78142V0.601088H99.05V5.56021H98.8336C97.7997 4.34597 96.4773 3.84706 93.3335 3.84706H87.052V11.3068H91.8728C94.7281 11.3068 95.798 10.8439 96.7297 9.98434H96.9461V15.8391H96.7297C95.8702 14.9855 94.6619 14.5527 91.8728 14.5527H87.052V22.1567H93.9045C96.6877 22.1567 98.2626 21.7299 99.3686 19.9447H99.585V25.4147Z" transform="translate(156.48 0)"/><path d="M72 692V695H292Q404 695 468.0 647.5Q532 600 532 521Q532 450 478.5 402.5Q425 355 334 345L634 2V0H541L249 340H175V154Q175 95 181.5 61.5Q188 28 206 3V0H72V3Q90 28 96.5 61.5Q103 95 103 154V542Q103 600 96.5 633.5Q90 667 72 692ZM456 520Q456 580 411.0 612.5Q366 645 280 645H175V391H280Q365 391 410.5 425.5Q456 460 456 520Z" transform="translate(256.64 25.41) scale(0.03570 -0.0357)" stroke="currentColor" stroke-width="42.0" stroke-linejoin="round" paint-order="stroke"/><path d="M51 347Q51 453 99.5 534.5Q148 616 229.5 660.5Q311 705 407 705Q518 705 609 654V555H605Q572 602 521.0 627.0Q470 652 411 652Q333 652 268.5 614.5Q204 577 166.5 508.5Q129 440 129 353Q129 262 166.5 194.0Q204 126 270.5 89.5Q337 53 420 53Q478 53 530.0 72.5Q582 92 632 132L642 91Q547 -10 405 -10Q307 -10 226.0 34.0Q145 78 98.0 159.0Q51 240 51 347Z" transform="translate(290.45 25.41) scale(0.03570 -0.0357)" stroke="currentColor" stroke-width="42.0" stroke-linejoin="round" paint-order="stroke"/><path d="M157.243 0.781433C156.42 2.0678 156.173 3.42029 156.173 5.92088V20.0589C156.173 22.5595 156.426 23.948 157.243 25.2344V25.4147H150.066V25.2344C150.926 23.948 151.136 22.5595 151.136 20.0589V14.5948H139.607V20.0589C139.607 22.5595 139.823 23.948 140.677 25.2344V25.4147H133.5V25.2344C134.323 23.948 134.57 22.5595 134.57 20.0589V5.92088C134.57 3.42029 134.317 2.0678 133.5 0.781433V0.601102H140.677V0.781433C139.817 2.0678 139.607 3.42029 139.607 5.92088V11.3489H151.136V5.92088C151.136 3.42029 150.92 2.0678 150.066 0.781433V0.601102H157.243V0.781433Z" transform="translate(182.52 0)"/><path d="M272.114 12.9238C272.114 5.31978 277.434 0 284.894 0C292.354 0 297.673 5.31978 297.673 12.9238C297.673 20.5277 292.318 25.8115 284.894 25.8115C277.47 25.8115 272.114 20.5638 272.114 12.9238ZM292.215 12.9238C292.215 7.1772 289.54 3.39023 284.9 3.39023C280.259 3.39023 277.584 7.17119 277.584 12.9238C277.584 18.6763 280.259 22.3852 284.9 22.3852C289.54 22.3852 292.215 18.6703 292.215 12.9238Z" transform="translate(69.25 0)"/><path d="M72 692V695H206V692Q188 667 181.5 633.5Q175 600 175 542V154Q175 95 181.5 61.5Q188 28 206 3V0H72V3Q90 28 96.5 61.5Q103 95 103 154V542Q103 600 96.5 633.5Q90 667 72 692Z" transform="translate(367.90 25.41) scale(0.03570 -0.0357)" stroke="currentColor" stroke-width="42.0" stroke-linejoin="round" paint-order="stroke"/><path d="M51 347Q51 453 99.5 534.5Q148 616 229.5 660.5Q311 705 407 705Q518 705 609 654V555H605Q572 602 521.0 627.0Q470 652 411 652Q333 652 268.5 614.5Q204 577 166.5 508.5Q129 440 129 353Q129 262 166.5 194.0Q204 126 270.5 89.5Q337 53 420 53Q478 53 530.0 72.5Q582 92 632 132L642 91Q547 -10 405 -10Q307 -10 226.0 34.0Q145 78 98.0 159.0Q51 240 51 347Z" transform="translate(377.74 25.41) scale(0.03570 -0.0357)" stroke="currentColor" stroke-width="42.0" stroke-linejoin="round" paint-order="stroke"/><path d="M99.585 25.4147H80.9507V25.2344C81.8103 23.948 82.0207 22.5234 82.0207 19.8785V5.8848C82.0207 3.45634 81.7682 2.03172 80.9507 0.78142V0.601088H99.05V5.56021H98.8336C97.7997 4.34597 96.4773 3.84706 93.3335 3.84706H87.052V11.3068H91.8728C94.7281 11.3068 95.798 10.8439 96.7297 9.98434H96.9461V15.8391H96.7297C95.8702 14.9855 94.6619 14.5527 91.8728 14.5527H87.052V22.1567H93.9045C96.6877 22.1567 98.2626 21.7299 99.3686 19.9447H99.585V25.4147Z" transform="translate(322.35 0)"/></svg></button>
   <div class="grp r"><a class="tab nv" href="https://makethemknown.org" target="_blank" rel="noopener">Make Them Known<svg class="ar" viewBox="0 0 13 13" fill="none"><path d="M11.1268 0H0.735027V1.87827H9.76655L0 11.6722L1.32506 13L11.1268 3.17163V12.2991H13V1.87827V0H11.1268Z" fill="#0e2734"/></svg></a></div>
@@ -492,8 +548,8 @@ html.story{scroll-snap-type:y proximity;}
     </div>
     <div class="wordR"><div class="bigword">Choice</div></div>
   </div>
-  <p class="ground lead"><mark>A new tool for Memphians to decide how to invest in health and safety.</mark></p>
-  <p class="ground">Shelby County spends more than $70 million a year to run a jail where <a class="glink" href="https://makethemknown.org" target="_blank" rel="noopener">68 people have died since 2018</a>. That is your money, and it doesn&rsquo;t have to be spent this way. We all want to be healthy and safe. <mark>Now it&rsquo;s your turn to choose.</mark></p>
+  <p class="ground lead"><mark>A new tool to help Memphians decide how to invest in health and safety.</mark></p>
+  <p class="ground">Shelby County spends more than $70 million a year to operate a jail where <a class="glink" href="https://makethemknown.org" target="_blank" rel="noopener">at least 70 people have died since 2018</a>. That is your money, and it doesn&rsquo;t have to be spent this way. We all want to be healthy and safe. <mark>Now it&rsquo;s your turn to choose.</mark></p>
   <div class="herocta">
     <button class="tab" onclick="document.getElementById('pick').scrollIntoView({behavior:'smooth',block:'start'})">Start here<svg class="ar" style="transform:rotate(135deg)" viewBox="0 0 13 13" fill="none"><path d="M11.1268 0H0.735027V1.87827H9.76655L0 11.6722L1.32506 13L11.1268 3.17163V12.2991H13V1.87827V0H11.1268Z" fill="#0e2734"/></svg></button>
   </div>
@@ -518,11 +574,11 @@ html.story{scroll-snap-type:y proximity;}
     <div class="ticks"><span>1%</span><span>25%</span><span>50%</span><span>75%</span><span>100%</span></div>
     <div class="presets" id="presets"></div>
   </div>
-  <div class="nextrow"><button class="tab" onclick="goTo('outsec')">Next: choose what it buys instead<svg class="ar" style="transform:rotate(135deg)" viewBox="0 0 13 13" fill="none"><path d="M11.1268 0H0.735027V1.87827H9.76655L0 11.6722L1.32506 13L11.1268 3.17163V12.2991H13V1.87827V0H11.1268Z" fill="#0e2734"/></svg></button></div>
+  <div class="nextrow"><button class="tab" onclick="goTo('outsec')">Next: choose what we get instead<svg class="ar" style="transform:rotate(135deg)" viewBox="0 0 13 13" fill="none"><path d="M11.1268 0H0.735027V1.87827H9.76655L0 11.6722L1.32506 13L11.1268 3.17163V12.2991H13V1.87827V0H11.1268Z" fill="#0e2734"/></svg></button></div>
 </div></section>
 
 <section class="sec warm" id="outsec"><div class="w">
-  <div class="step stepbig"><span class="stepnum">03</span><span class="steplab">Choose what it buys instead</span></div>
+  <div class="step stepbig"><span class="stepnum">03</span><span class="steplab">Choose what we get instead</span></div>
   <h2>What could Memphis <mark>have?</mark></h2>
   <div class="picker" id="outs"></div>
   <div class="nextrow"><button class="tab" onclick="goTo('answersec')">See your choice<svg class="ar" style="transform:rotate(135deg)" viewBox="0 0 13 13" fill="none"><path d="M11.1268 0H0.735027V1.87827H9.76655L0 11.6722L1.32506 13L11.1268 3.17163V12.2991H13V1.87827V0H11.1268Z" fill="#0e2734"/></svg></button></div>
@@ -556,8 +612,8 @@ html.story{scroll-snap-type:y proximity;}
     <input type="range" id="dial2" min="1" max="100" value="5">
     <div class="ticks"><span>1%</span><span>50%</span><span>100%</span></div>
   </div>
-  <div class="v2step"><div class="bigword v2line">We could buy <mark>more</mark> of this&hellip;</div>
-    <select id="s2unit" class="tab sel" aria-label="What it could buy instead"></select></div>
+  <div class="v2step"><div class="bigword v2line">We could get <mark>more</mark> of this&hellip;</div>
+    <select id="s2unit" class="tab sel" aria-label="What we get instead"></select></div>
   <div style="text-align:center;margin-top:34px">
     <div class="pol tilt" style="margin:0 auto"><div class="inner" style="min-width:290px">
       <div class="wash w-lav"></div>
@@ -574,7 +630,7 @@ html.story{scroll-snap-type:y proximity;}
     <p class="lede">It is published in a budget book hundreds of pages long. It is entirely public. Almost nobody reads it.</p>
         <button class="keepgo" onclick="nextBeat(this)" aria-label="Next">Keep scrolling<span class="bounce" aria-hidden="true">&darr;</span></button></section>
 
-  <section class="beat"><div class="beatnum" data-n="41.8" data-suf="%">41.8%</div>
+  <section class="beat dark"><div class="beatnum" data-n="41.8" data-suf="%">41.8%</div>
     <div class="beatlab"><mark>of the general fund goes to the Sheriff</mark></div>
     <h2>More than <mark>forty cents</mark> of every dollar.</h2>
     <p class="lede">$212 million out of a $507.5 million general fund. Of that, $70.3 million runs the jail &mdash; and another $45.9 million runs the Corrections Center from a separate fund.</p>
@@ -590,14 +646,14 @@ html.story{scroll-snap-type:y proximity;}
     </div>
     <button class="keepgo" onclick="nextBeat(this)" aria-label="Next">Keep going<span class="bounce" aria-hidden="true">&darr;</span></button></section>
 
-  <section class="beat"><div class="beatnum" data-n="36" data-suf="&times;">36&times;</div>
+  <section class="beat forest"><div class="beatnum" data-n="36" data-suf="&times;">36&times;</div>
     <div class="beatlab"><mark>more on the jail than on diversion</mark></div>
     <h2>Here is how we <mark>fund</mark> those goals.</h2>
     <div class="bars" id="b2bars"></div>
     <p class="prov">Shelby County FY2026 Adopted Budget. Community &amp; Diversion Services sits inside the Community Services division.</p>
     <button class="keepgo" onclick="nextBeat(this)" aria-label="Next">Keep going<span class="bounce" aria-hidden="true">&darr;</span></button></section>
 
-  <section class="beat"><h2>So what would a <mark>different choice</mark> buy?</h2>
+  <section class="beat"><h2>So what would a <mark>different choice</mark> get us?</h2>
     <div class="picker" id="outs3" style="margin-bottom:20px"></div>
     <div class="b5row"><div class="dialbox b5dial">
       <div class="dialhead"><div class="dialpct" style="font-size:clamp(36px,6vw,60px)"><span id="pct3">5</span>%</div>
@@ -609,7 +665,7 @@ html.story{scroll-snap-type:y proximity;}
       <div class="num" id="big3">0</div><div class="scr" id="bigunit3"></div></div></div></div>
     <button class="keepgo" onclick="nextBeat(this)" aria-label="Next">Keep going<span class="bounce" aria-hidden="true">&darr;</span></button></section>
 
-  <section class="beat"><h2>These are not contested numbers. They are the <mark>county&rsquo;s own.</mark></h2>
+  <section class="beat dark"><h2>These are not contested numbers. They are the <mark>county&rsquo;s own.</mark></h2>
     <p class="lede">Shelby County publishes all of it. What it means, and what to do about it, is a separate question &mdash; and it belongs to you.</p>
     <div class="cardacts v3acts"><button class="tab" onclick="openShare(this)" aria-haspopup="dialog" aria-controls="share">Share your choice<svg class="ar" viewBox="0 0 13 13" fill="none"><path d="M11.1268 0H0.735027V1.87827H9.76655L0 11.6722L1.32506 13L11.1268 3.17163V12.2991H13V1.87827V0H11.1268Z" fill="#0e2734"/></svg></button><button class="tab" onclick="openMeth(this)" aria-haspopup="dialog" aria-controls="meth">Methodology<span aria-hidden="true" style="font-size:15px;line-height:0;margin-left:2px">+</span></button></div></section>
 </div></div>
@@ -632,7 +688,7 @@ html.story{scroll-snap-type:y proximity;}
       <div class="prov" style="margin:0 0 6px"><b>Move <span id="pct4">5</span>% of <span id="line4"></span></b></div>
       <input type="range" id="dial4" min="1" max="100" value="5" style="height:32px">
       <select id="s4line" class="tab sel" style="width:100%;margin-top:10px" aria-label="What the county pays for"></select>
-      <select id="s4unit" class="tab sel" style="width:100%;margin-top:10px" aria-label="What it could buy instead"></select>
+      <select id="s4unit" class="tab sel" style="width:100%;margin-top:10px" aria-label="What we get instead"></select>
     </div>
     <div style="text-align:center;margin-top:22px;padding-top:15px;border-top:1px dotted rgba(14,39,52,.3);font-family:'Neue Haas';font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;opacity:.62;line-height:1.9">
       Shelby County, Tennessee<br>Adopted Budget FY2026<br>Just City &middot; Memphis</div>
@@ -647,7 +703,7 @@ html.story{scroll-snap-type:y proximity;}
     <div class="mtktext">
       <div class="step">A community memorial</div>
       <h2>Make them known <mark>and make it stop.</mark></h2>
-      <p class="lede">The people behind the jail budget. Since 2018, 68 people have died in the Shelby County Jail, most of them waiting for a day in court that never came. Leave a note for someone we&rsquo;ve lost. Reach out if you knew them. Watch the courts where these decisions are made. Stand with Just City.</p>
+      <p class="lede">The people impacted by the jail budget. Since 2018, at least 70 people have died in the Shelby County Jail, most of them waiting for a day in court that never came. Leave a note for someone we&rsquo;ve lost. Reach out if you knew them. Watch the courts where these decisions are made. Stand with Just City.</p>
       
     </div>
   </div>
@@ -677,7 +733,7 @@ html.story{scroll-snap-type:y proximity;}
 
 </svg>
       <div class="ftstack"><svg class="wmsvg" viewBox="0 -0.3 422.4 26.4" fill="currentColor" role="img" aria-label="Make Another Choice"><path d="M11.9981 25.4087L4.92906 5.74054H4.71267V19.7703C4.71267 22.3791 4.92906 23.9841 5.78263 25.2344V25.4147H0V25.2344C0.859581 24.0202 1.06997 22.3791 1.06997 19.7703V5.8848C1.06997 3.63667 0.925702 2.03172 0 0.78142V0.601088H8.06683L14.7451 19.2354H14.9254L21.5256 0.601088H29.1656V0.78142C28.3061 2.06779 28.0957 3.45634 28.0957 5.92087V19.9507C28.0957 22.5955 28.3121 23.912 29.1656 25.2344V25.4147H22.1327V25.2344C23.0223 23.912 23.2027 22.5595 23.2027 19.9507V6.06514H23.0223L16.1697 25.4147H11.9921L11.9981 25.4087Z" transform="translate(0.00 0)"/><path d="M42.5402 0C36.3992 0 31.4197 4.96369 31.4197 11.0852V22.9614C31.4197 24.2224 32.447 25.2464 33.712 25.2464H40.5583C41.3902 25.2159 41.969 24.5548 41.9613 23.6759C41.9537 22.6442 41.3058 22.1436 40.4472 22.1054H39.393C36.403 22.1054 33.9765 19.6866 33.9765 16.7061H37.3307C39.8108 16.7061 41.8962 18.3683 42.5363 20.6343C43.1803 18.3683 45.2656 16.7061 47.742 16.7061H51.0961C51.0961 19.6866 48.6696 22.1054 45.6796 22.1054H44.6255C43.7668 22.1436 43.119 22.6442 43.1113 23.6759C43.1037 24.5548 43.6863 25.2159 44.5143 25.2464H51.3606C52.6256 25.2464 53.6529 24.2224 53.6529 22.9614V11.0852C53.6606 4.96369 48.6811 0 42.5402 0ZM42.5402 4.66564C43.6557 4.66564 44.5603 5.56743 44.5603 6.67939C44.5603 7.79135 43.6557 8.69315 42.5402 8.69315C41.4247 8.69315 40.52 7.79135 40.52 6.67939C40.52 5.56743 41.4247 4.66564 42.5402 4.66564ZM47.075 12.1322C47.075 14.6236 45.0663 16.645 42.5747 16.6832C42.5747 16.6832 42.5517 16.6832 42.5402 16.6832C42.5287 16.6832 42.5172 16.6832 42.5057 16.6832C40.014 16.6412 38.0053 14.6198 38.0053 12.1284V9.30835C40.3437 9.30835 42.2718 11.0623 42.5402 13.3244C42.8085 11.0623 44.7328 9.30835 47.075 9.30835V12.1322Z" transform="translate(0.15 0)"/><path d="M68.7123 10.6696L80.2415 25.3426V25.4147H73.7436L65.3521 14.3123L62.6051 17.3118V19.9507C62.6051 22.5595 62.8215 23.948 63.6751 25.2344V25.4147H56.5339V25.2344C57.3574 23.948 57.6039 22.5595 57.6039 19.9507V5.92087C57.6039 3.42027 57.3514 2.06779 56.5339 0.78142V0.601088H63.6751V0.78142C62.8155 2.06779 62.6051 3.42027 62.6051 5.92087V12.3467H62.7854L69.4276 4.8509C71.0326 3.06562 71.4654 1.88745 71.4654 0.78142V0.601088H78.853V0.78142C76.677 2.10385 75.2824 3.52847 73.1785 5.81267L68.7183 10.6696H68.7123Z" transform="translate(-0.34 0)"/><path d="M99.585 25.4147H80.9507V25.2344C81.8103 23.948 82.0207 22.5234 82.0207 19.8785V5.8848C82.0207 3.45634 81.7682 2.03172 80.9507 0.78142V0.601088H99.05V5.56021H98.8336C97.7997 4.34597 96.4773 3.84706 93.3335 3.84706H87.052V11.3068H91.8728C94.7281 11.3068 95.798 10.8439 96.7297 9.98434H96.9461V15.8391H96.7297C95.8702 14.9855 94.6619 14.5527 91.8728 14.5527H87.052V22.1567H93.9045C96.6877 22.1567 98.2626 21.7299 99.3686 19.9447H99.585V25.4147Z" transform="translate(-0.14 0)"/><path d="M295 695H355L573 156Q598 94 614.5 61.5Q631 29 653 3V0H516V3Q525 21 525 45Q525 86 497 154L471 218H166L140 152Q114 84 114 47Q114 22 124 3V0H4V3Q26 28 43.0 61.0Q60 94 83 153ZM451 270 319 600H315L186 270Z" transform="translate(111.55 25.41) scale(0.03570 -0.0357)" stroke="currentColor" stroke-width="42.0" stroke-linejoin="round" paint-order="stroke"/><path d="M246.988 25.1322C247.848 23.9541 248.058 22.2049 248.058 19.7764V2.0017L247.132 0.607133V0.498934H254.52L264.763 18.3458H264.979V5.95697C264.979 3.52851 264.763 1.85142 263.909 0.673255V0.492921H269.8V0.673255C268.91 1.85142 268.73 3.52851 268.73 5.95697V25.3066H263.338L252.019 5.84877H251.803V19.7704C251.803 22.1988 251.983 23.9481 252.873 25.1262V25.3066H246.982V25.1262L246.988 25.1322Z" transform="translate(-109.87 0)"/><path d="M272.114 12.9238C272.114 5.31978 277.434 0 284.894 0C292.354 0 297.673 5.31978 297.673 12.9238C297.673 20.5277 292.318 25.8115 284.894 25.8115C277.47 25.8115 272.114 20.5638 272.114 12.9238ZM292.215 12.9238C292.215 7.1772 289.54 3.39023 284.9 3.39023C280.259 3.39023 277.584 7.17119 277.584 12.9238C277.584 18.6763 280.259 22.3852 284.9 22.3852C289.54 22.3852 292.215 18.6703 292.215 12.9238Z" transform="translate(-110.59 0)"/><path d="M117.546 25.2345C118.544 23.9842 118.796 22.5956 118.796 19.9868V3.81708H116.548C113.441 3.81708 111.8 4.46026 110.982 5.71056H110.766V0.607176H131.864V5.71056H131.648C130.788 4.46026 129.183 3.81708 126.082 3.81708H123.834V19.9868C123.834 22.5956 124.086 23.9842 125.084 25.2345V25.4148H117.552V25.2345H117.546Z" transform="translate(77.92 0)"/><path d="M157.243 0.781433C156.42 2.0678 156.173 3.42029 156.173 5.92088V20.0589C156.173 22.5595 156.426 23.948 157.243 25.2344V25.4147H150.066V25.2344C150.926 23.948 151.136 22.5595 151.136 20.0589V14.5948H139.607V20.0589C139.607 22.5595 139.823 23.948 140.677 25.2344V25.4147H133.5V25.2344C134.323 23.948 134.57 22.5595 134.57 20.0589V5.92088C134.57 3.42029 134.317 2.0678 133.5 0.781433V0.601102H140.677V0.781433C139.817 2.0678 139.607 3.42029 139.607 5.92088V11.3489H151.136V5.92088C151.136 3.42029 150.92 2.0678 150.066 0.781433V0.601102H157.243V0.781433Z" transform="translate(77.78 0)"/><path d="M99.585 25.4147H80.9507V25.2344C81.8103 23.948 82.0207 22.5234 82.0207 19.8785V5.8848C82.0207 3.45634 81.7682 2.03172 80.9507 0.78142V0.601088H99.05V5.56021H98.8336C97.7997 4.34597 96.4773 3.84706 93.3335 3.84706H87.052V11.3068H91.8728C94.7281 11.3068 95.798 10.8439 96.7297 9.98434H96.9461V15.8391H96.7297C95.8702 14.9855 94.6619 14.5527 91.8728 14.5527H87.052V22.1567H93.9045C96.6877 22.1567 98.2626 21.7299 99.3686 19.9447H99.585V25.4147Z" transform="translate(156.48 0)"/><path d="M72 692V695H292Q404 695 468.0 647.5Q532 600 532 521Q532 450 478.5 402.5Q425 355 334 345L634 2V0H541L249 340H175V154Q175 95 181.5 61.5Q188 28 206 3V0H72V3Q90 28 96.5 61.5Q103 95 103 154V542Q103 600 96.5 633.5Q90 667 72 692ZM456 520Q456 580 411.0 612.5Q366 645 280 645H175V391H280Q365 391 410.5 425.5Q456 460 456 520Z" transform="translate(256.64 25.41) scale(0.03570 -0.0357)" stroke="currentColor" stroke-width="42.0" stroke-linejoin="round" paint-order="stroke"/><path d="M51 347Q51 453 99.5 534.5Q148 616 229.5 660.5Q311 705 407 705Q518 705 609 654V555H605Q572 602 521.0 627.0Q470 652 411 652Q333 652 268.5 614.5Q204 577 166.5 508.5Q129 440 129 353Q129 262 166.5 194.0Q204 126 270.5 89.5Q337 53 420 53Q478 53 530.0 72.5Q582 92 632 132L642 91Q547 -10 405 -10Q307 -10 226.0 34.0Q145 78 98.0 159.0Q51 240 51 347Z" transform="translate(290.45 25.41) scale(0.03570 -0.0357)" stroke="currentColor" stroke-width="42.0" stroke-linejoin="round" paint-order="stroke"/><path d="M157.243 0.781433C156.42 2.0678 156.173 3.42029 156.173 5.92088V20.0589C156.173 22.5595 156.426 23.948 157.243 25.2344V25.4147H150.066V25.2344C150.926 23.948 151.136 22.5595 151.136 20.0589V14.5948H139.607V20.0589C139.607 22.5595 139.823 23.948 140.677 25.2344V25.4147H133.5V25.2344C134.323 23.948 134.57 22.5595 134.57 20.0589V5.92088C134.57 3.42029 134.317 2.0678 133.5 0.781433V0.601102H140.677V0.781433C139.817 2.0678 139.607 3.42029 139.607 5.92088V11.3489H151.136V5.92088C151.136 3.42029 150.92 2.0678 150.066 0.781433V0.601102H157.243V0.781433Z" transform="translate(182.52 0)"/><path d="M272.114 12.9238C272.114 5.31978 277.434 0 284.894 0C292.354 0 297.673 5.31978 297.673 12.9238C297.673 20.5277 292.318 25.8115 284.894 25.8115C277.47 25.8115 272.114 20.5638 272.114 12.9238ZM292.215 12.9238C292.215 7.1772 289.54 3.39023 284.9 3.39023C280.259 3.39023 277.584 7.17119 277.584 12.9238C277.584 18.6763 280.259 22.3852 284.9 22.3852C289.54 22.3852 292.215 18.6703 292.215 12.9238Z" transform="translate(69.25 0)"/><path d="M72 692V695H206V692Q188 667 181.5 633.5Q175 600 175 542V154Q175 95 181.5 61.5Q188 28 206 3V0H72V3Q90 28 96.5 61.5Q103 95 103 154V542Q103 600 96.5 633.5Q90 667 72 692Z" transform="translate(367.90 25.41) scale(0.03570 -0.0357)" stroke="currentColor" stroke-width="42.0" stroke-linejoin="round" paint-order="stroke"/><path d="M51 347Q51 453 99.5 534.5Q148 616 229.5 660.5Q311 705 407 705Q518 705 609 654V555H605Q572 602 521.0 627.0Q470 652 411 652Q333 652 268.5 614.5Q204 577 166.5 508.5Q129 440 129 353Q129 262 166.5 194.0Q204 126 270.5 89.5Q337 53 420 53Q478 53 530.0 72.5Q582 92 632 132L642 91Q547 -10 405 -10Q307 -10 226.0 34.0Q145 78 98.0 159.0Q51 240 51 347Z" transform="translate(377.74 25.41) scale(0.03570 -0.0357)" stroke="currentColor" stroke-width="42.0" stroke-linejoin="round" paint-order="stroke"/><path d="M99.585 25.4147H80.9507V25.2344C81.8103 23.948 82.0207 22.5234 82.0207 19.8785V5.8848C82.0207 3.45634 81.7682 2.03172 80.9507 0.78142V0.601088H99.05V5.56021H98.8336C97.7997 4.34597 96.4773 3.84706 93.3335 3.84706H87.052V11.3068H91.8728C94.7281 11.3068 95.798 10.8439 96.7297 9.98434H96.9461V15.8391H96.7297C95.8702 14.9855 94.6619 14.5527 91.8728 14.5527H87.052V22.1567H93.9045C96.6877 22.1567 98.2626 21.7299 99.3686 19.9447H99.585V25.4147Z" transform="translate(322.35 0)"/></svg>
-        <p>A tool for Memphians to decide how to invest in health and safety.</p>
+        <p>A new tool to help Memphians decide how to invest in health and safety.</p>
       </div>
     </div>
     <div class="ftlinks">
@@ -709,11 +765,10 @@ html.story{scroll-snap-type:y proximity;}
   <div class="mbox">
     <button class="mclose" onclick="closeShare()" aria-label="Close"><svg viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" fill="var(--navy)"/><rect x="0.5" y="0.5" width="47" height="47" fill="none" stroke="var(--cream)"/><path d="M17 17 L31 31 M31 17 L17 31" stroke="var(--cream)" stroke-width="1.5"/></svg></button>
     <div class="step">Share</div><h3 id="shareT">Share <mark>your choice.</mark></h3>
-    <p class="mlead">Post it, text it, or send it to a friend. The words below go with you; edit them once you land where you&rsquo;re posting.</p>
-    <div class="sharegrid"><div class="cardwrap"><img id="cardImg" alt="Share card"><a class="tab" id="cardDl" href="#" download="make-another-choice.png">Download the card<svg class="ar" viewBox="0 0 13 13" fill="none"><path d="M11.1268 0H0.735027V1.87827H9.76655L0 11.6722L1.32506 13L11.1268 3.17163V12.2991H13V1.87827V0H11.1268Z" fill="#0e2734"/></svg></a><span class="sharenote">On a phone, press and hold the card to save it, then post it to Instagram with the words below as the caption.</span></div>
+    <p class="mlead">Post it, text it, or send it to a friend. The words below go with you; edit them in the app where you&rsquo;re posting.</p>
+    <div class="sharegrid"><div class="cardwrap"><img id="cardImg" alt="Share card"><a class="tab" id="cardDl" href="#" download="make-another-choice.png">Download the card (desktop)<svg class="ar" viewBox="0 0 13 13" fill="none"><path d="M11.1268 0H0.735027V1.87827H9.76655L0 11.6722L1.32506 13L11.1268 3.17163V12.2991H13V1.87827V0H11.1268Z" fill="#0e2734"/></svg></a><span class="sharenote">On a phone, press and hold the card to save it, then post it to your app with these words as the caption.</span></div>
     <pre class="sharetxt" id="shareTxt"></pre></div>
     <div class="sharerow">
-      <a class="tab" id="shX" href="#" target="_blank" rel="noopener">X / Twitter<svg class="ar" viewBox="0 0 13 13" fill="none"><path d="M11.1268 0H0.735027V1.87827H9.76655L0 11.6722L1.32506 13L11.1268 3.17163V12.2991H13V1.87827V0H11.1268Z" fill="#0e2734"/></svg></a>
       <a class="tab" id="shB" href="#" target="_blank" rel="noopener">Bluesky<svg class="ar" viewBox="0 0 13 13" fill="none"><path d="M11.1268 0H0.735027V1.87827H9.76655L0 11.6722L1.32506 13L11.1268 3.17163V12.2991H13V1.87827V0H11.1268Z" fill="#0e2734"/></svg></a>
       <a class="tab" id="shI" href="https://www.instagram.com/" target="_blank" rel="noopener" onclick="copyTo(this)">Instagram<svg class="ar" viewBox="0 0 13 13" fill="none"><path d="M11.1268 0H0.735027V1.87827H9.76655L0 11.6722L1.32506 13L11.1268 3.17163V12.2991H13V1.87827V0H11.1268Z" fill="#0e2734"/></svg></a>
       <a class="tab" id="shS" href="#">Text<svg class="ar" viewBox="0 0 13 13" fill="none"><path d="M11.1268 0H0.735027V1.87827H9.76655L0 11.6722L1.32506 13L11.1268 3.17163V12.2991H13V1.87827V0H11.1268Z" fill="#0e2734"/></svg></a>
@@ -734,7 +789,7 @@ var LINES=[
  {n:"Jail administration",sub:"Up 17.4% from FY25",v:5292921,w:"lime"},
  {n:"201 Poplar renovations",sub:"Capital, FY26",v:2775000,w:"lime"},
  {n:"The Sheriff, all in",sub:"41.8% of the general fund",v:212021062,w:"coral"},
- {n:"Law enforcement",sub:"Sheriff’s Office division · Up 8.4% from FY25",v:103553586,w:"sage"},
+ {n:"Law enforcement",sub:"Sheriff division 62 · Up 8.4% from FY25",v:103553586,w:"sage"},
  {n:"Sheriff administration",sub:"Up 8.5% from FY25",v:32786389,w:"sage"}
 ];
 var UNITS=[
@@ -789,6 +844,7 @@ function build(){
  var uo=UNITS.map(function(u,i){return '<option value="'+i+'">'+u.n+'</option>';}).join("");
  ["s2line","s4line"].forEach(function(id){$(id).innerHTML=lo;$(id).value=li;});
  ["s2unit","s4unit"].forEach(function(id){$(id).innerHTML=uo;$(id).value=ui;});
+ syncDD();
  $("rlines").innerHTML=RECEIPT.map(function(r){
   return '<div class="rline"><span>'+r[0]+'</span><span>'+usd(r[1])+'</span></div>';}).join("");
 }
@@ -823,7 +879,7 @@ function render(){
  if($("pct")){$("pct").textContent=pct;$("lineName").textContent=L.n.toLowerCase();$("amt").textContent=big$(amt);}
  countTo($("big"),Math.floor(c));var yp=document.querySelector("#answersec .pol");if(yp){yp.classList.remove("pop");void yp.offsetWidth;yp.classList.add("pop");}
  if($("bigunit"))$("bigunit").innerHTML="<mark>"+word.replace(/\n/g,"<br>")+"</mark>";
- if($("wash2"))$("wash2").className="wash w-"+L.w;
+ var sig=li+"|"+ui+"|"+pct;if(sig!==render.lastSig){render.lastSig=sig;var WS=["coral","green","lav","lime","peach","coral2","green2","lav2","lime2","peach2"].filter(function(w){return w!==render.lastW;});var nw=WS[Math.floor(Math.random()*WS.length)];render.lastW=nw;document.querySelectorAll(".pol .wash").forEach(function(el){if(!el.closest(".hero"))el.className="wash w-"+nw;});}
  if($("cardcap"))$("cardcap").textContent="for "+pct+"% of "+L.n.toLowerCase();
  if($("sentence"))$("sentence").innerHTML="Shelby County budgets <b>"+big$(L.v)+"</b> for "+L.n.toLowerCase()+
    ". Moving <b>"+pct+"%</b> of that money could cover <b>"+txt+" "+word.replace(/\n/g," ")+"</b>.";
@@ -837,7 +893,7 @@ function render(){
  countTo($("big4"),Math.floor(c));
  if($("bigunit4"))$("bigunit4").innerHTML="<mark>"+word.replace(/\n/g," ")+"</mark>";
  copyTxt="Shelby County budgets "+big$(L.v)+" for "+L.n.toLowerCase()+". I\u2019d make another choice: moving "+pct+"% of that money ("+big$(amt)+") could cover "+txt+" "+word.replace(/\n/g," ")+".\n\nShelby County spends 36 times more on the jail than on community and diversion services. Freedom works and it\u2019s affordable.\n\nIt\u2019s time to find the courage to make another choice. makeanotherchoice.org";
- if($("shareTxt")){$("shareTxt").textContent=copyTxt;var enc=encodeURIComponent(copyTxt);$("shX").href="https://twitter.com/intent/tweet?text="+enc;$("shB").href="https://bsky.app/intent/compose?text="+enc;$("shM").href="mailto:?subject="+encodeURIComponent("Make another choice")+"&body="+enc;$("shS").href="sms:?&body="+enc;}
+ if($("shareTxt")){$("shareTxt").textContent=copyTxt;var enc=encodeURIComponent(copyTxt);$("shB").href="https://bsky.app/intent/compose?text="+enc;$("shM").href="mailto:?subject="+encodeURIComponent("Make another choice")+"&body="+enc;$("shS").href="sms:?&body="+enc;}
  render3();
 }
 function render3(){
@@ -879,6 +935,20 @@ function scrollNav(){var t=document.querySelector('.top');var th=(t?t.offsetHeig
 window.addEventListener('scroll',scrollNav,{passive:true});scrollNav();
 document.addEventListener('click',function(e){if(hambOpen&&!e.target.closest('.scrollnav'))closeHamb();});
 function nextBeat(b){var n=b.closest('.beat').nextElementSibling;if(n)n.scrollIntoView({behavior:'smooth',block:'start'});}
+
+function makeDD(id){var sel=$(id);if(!sel||sel._dd)return;var w=document.createElement('div');w.className='cdd'+(/unit/.test(id)?' alt':'');
+ w.innerHTML='<button type="button" class="cddbtn" aria-haspopup="listbox" aria-expanded="false"><span class="cddlab"></span><svg class="chev" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></button><div class="cddmenu" role="listbox"></div>';
+ sel.parentNode.insertBefore(w,sel.nextSibling);sel.classList.add('srhide');sel._dd=w;
+ var btn=w.firstChild;btn.setAttribute('aria-label',sel.getAttribute('aria-label')||'');
+ btn.onclick=function(e){e.stopPropagation();var open=!w.classList.contains('open');document.querySelectorAll('.cdd.open').forEach(function(o){o.classList.remove('open');});w.classList.toggle('open',open);btn.setAttribute('aria-expanded',open);};
+ w.querySelector('.cddmenu').onclick=function(e){e.stopPropagation();};}
+function syncDD(){['s2line','s4line','s2unit','s4unit'].forEach(function(id){var sel=$(id);if(!sel)return;makeDD(id);var w=sel._dd,isLine=/line/.test(id),cur=+sel.value,items=isLine?LINES:UNITS;
+ w.querySelector('.cddlab').textContent=isLine?items[cur].n+' — '+big$(items[cur].v):items[cur].n;
+ w.querySelector('.cddmenu').innerHTML=items.map(function(it,i){return '<button type="button" role="option" aria-selected="'+(i===cur)+'" class="cddopt'+(i===cur?' on':'')+'"'+tilt(i+(isLine?0:5))+' data-v="'+i+'"><b>'+it.n+'</b><span>'+(isLine?big$(it.v)+' &middot; '+it.sub:usd(it.c)+' each')+'</span></button>';}).join('');
+ w.querySelectorAll('.cddopt').forEach(function(o){o.onclick=function(){sel.value=o.getAttribute('data-v');sel.dispatchEvent(new Event('change'));w.classList.remove('open');w.firstChild.setAttribute('aria-expanded','false');};});});}
+document.addEventListener('click',function(){document.querySelectorAll('.cdd.open').forEach(function(w){w.classList.remove('open');w.firstChild.setAttribute('aria-expanded','false');});});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')document.querySelectorAll('.cdd.open').forEach(function(w){w.classList.remove('open');w.firstChild.setAttribute('aria-expanded','false');});});
+
 function topH(){var t=document.querySelector('.top');if(t)document.documentElement.style.setProperty('--topH',t.offsetHeight+'px');}
 topH();window.addEventListener('resize',topH);
 var JAIL=70289717,HC=[0,2,8,4,9,11,12],HW=['green','lav2','lime','peach2','green2','lav','lime2'],hci=0,hTimer=null;
@@ -904,7 +974,7 @@ function makeCard(){
  var navy=cs.getPropertyValue('--navy').trim()||'#0e2734',cream=cs.getPropertyValue('--cream').trim()||'#faf4e8',blush=cs.getPropertyValue('--blush').trim()||'#e3cbb7',lime=cs.getPropertyValue('--lime').trim()||'#d9ed58',lav=cs.getPropertyValue('--lav').trim()||'#b6aee0';
  var altWash='--w-'+(['green','lav','lime','peach'][ui%4]);
  return Promise.all([document.fonts.load('300 100px "Arizona Flare"'),document.fonts.load('400 40px "Neue Haas"'),document.fonts.load('700 40px "Neue Haas"'),
-   loadImg(cssUrl(cs.getPropertyValue('--tex'))),loadImg(cssUrl(cs.getPropertyValue('--w-coral'))),loadImg(cssUrl(cs.getPropertyValue(altWash))),svgToImg(document.querySelector('.wordmark .wmsvg'),cream)]).then(function(r){
+   loadImg(cssUrl(cs.getPropertyValue('--tex'))),Promise.resolve(null),Promise.resolve(null),svgToImg(document.querySelector('.wordmark .wmsvg'),cream)]).then(function(r){
   var tex=r[3],washA=r[4],washB=r[5],wm=r[6];
   x.fillStyle=navy;x.fillRect(0,0,W,H);
   if(tex){x.save();x.globalCompositeOperation='soft-light';var ts=340;for(var ty=0;ty<H;ty+=ts*tex.height/tex.width)for(var tx=0;tx<W;tx+=ts)x.drawImage(tex,tx,ty,ts,ts*tex.height/tex.width);x.restore();}
@@ -929,8 +999,8 @@ function makeCard(){
    ul.forEach(function(ln,i){var tw=x.measureText(ln).width,ly=uy+i*46;x.fillStyle=lime;x.fillRect(ix+iw/2-tw/2-10,ly-30,tw+20,42);x.fillStyle=navy;x.fillText(ln,ix+iw/2,ly);});
    x.font='400 27px "Neue Haas"';x.fillStyle=navy;x.globalAlpha=.85;x.fillText(pct===100?'for the price of one year of '+(li===0?'the jail':L.n.toLowerCase()):'for '+pct+'% of '+(li===0?'the jail':L.n.toLowerCase()),ix+iw/2,iy+ih+46);x.globalAlpha=1;});
   // "or" between them
-  x.save();x.shadowColor='rgba(8,24,33,.3)';x.shadowBlur=20;x.shadowOffsetY=8;x.fillStyle=lav;x.fillRect(432,590,78,46);x.restore();
-  x.fillStyle=navy;x.font='700 24px "Neue Haas"';x.fillText('OR',471,622);
+  x.save();x.shadowColor='rgba(8,24,33,.3)';x.shadowBlur=20;x.shadowOffsetY=8;x.translate(471,613);x.rotate(-2*Math.PI/180);x.fillStyle=lav;x.fillRect(-92,-27,184,54);x.shadowColor='transparent';x.fillStyle=navy;x.fillRect(-88,31,184,0);x.restore();
+  x.save();x.translate(471,613);x.rotate(-2*Math.PI/180);x.fillStyle=navy;x.font='700 30px "Neue Haas"';x.fillText('ANOTHER',0,11);x.restore();
   // headline + sentence
   x.font='300 88px "Arizona Flare"';var ht='I’d make another choice.',hw=x.measureText(ht).width;x.fillStyle=lime;x.fillRect(W/2-hw/2-18,1030-70,hw+36,94);x.fillStyle=navy;x.fillText(ht,W/2,1030);x.fillStyle=cream;
   x.font='400 34px "Neue Haas"';var sent='Shelby County budgets '+big$(L.v)+' for '+L.n.toLowerCase()+'. Moving '+pct+'% of that money could cover '+c.toLocaleString()+' '+word+'.';
