@@ -482,10 +482,11 @@ html.story{scroll-snap-type:none;} .beat{scroll-snap-align:none;}
 #v3 .beat.dark::before,#v3 .beat.forest::before{opacity:.9;}
 #v3 .beat.dark h2,#v3 .beat.forest h2,#v3 .beat.dark .lede,#v3 .beat.forest .lede,#v3 .beat.dark .prov,#v3 .beat.forest .prov,#v3 .beat.dark .keepgo,#v3 .beat.forest .keepgo,#v3 .beat.dark .beatlab,#v3 .beat.forest .beatlab{color:var(--cream);}
 #v3 .beat.dark .beatnum,#v3 .beat.forest .beatnum{color:var(--lime);}
-#v3 .beat.forest .bar{border-bottom-color:rgba(250,244,232,.22);}
-#v3 .beat.forest .bar .bt{background:rgba(250,244,232,.14);}
-#v3 .beat.forest .bt i{background:var(--lime);}
-#v3 .beat.forest .bar .bl,#v3 .beat.forest .bar .bv{color:var(--cream);}
+#v3 .beat.forest .bar,#v3 .beat.dark .bar{border-bottom-color:rgba(250,244,232,.22);}
+#v3 .beat.forest .bar .bt,#v3 .beat.dark .bar .bt{background:rgba(250,244,232,.14);}
+#v3 .beat.forest .bt i,#v3 .beat.dark .bt i{background:var(--lime);}
+#v3 .beat.forest .bar .bl,#v3 .beat.forest .bar .bv,#v3 .beat.dark .bar .bl,#v3 .beat.dark .bar .bv{color:var(--cream);}
+#v3 .beat.dark .eyebrow,#v3 .beat.forest .eyebrow{color:var(--lime);}
 #v3 .beat.dark .cardacts .tab{background:var(--blush);}
 #v3 .beat{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding-top:48px;padding-bottom:110px;min-height:100vh;min-height:100svh;}
 #v3 .beat>*{width:100%;}
@@ -523,6 +524,80 @@ select.srhide{position:absolute!important;width:1px;height:1px;opacity:0;pointer
 .cddopt span{font-size:11.5px;opacity:.88;font-variant-numeric:tabular-nums;}
 .rcp .cdd{display:block;width:100%;margin-top:10px;} .rcp .cddbtn{width:100%;} .rcp .cddmenu{left:0;transform:none;width:100%;max-width:none;}
 @media(max-width:860px){.cddmenu{position:fixed;left:16px;right:16px;top:auto;bottom:16px;transform:none;width:auto;max-width:none;max-height:70vh;}}
+.pol .wash{display:none!important;}
+/* ---- story transitions: descriptive paper chips ---- */
+#v3 .beat>.keepgo{position:absolute;left:50%;bottom:26px;transform:translateX(-50%) rotate(-1deg);display:inline-flex;align-items:center;gap:10px;
+ background:var(--blush);color:var(--navy);border:2px solid var(--navy);box-shadow:3px 3px 0 var(--navy);padding:11px 16px;
+ font-family:'Neue Haas';font-weight:700;font-size:12.5px;letter-spacing:.04em;text-transform:uppercase;line-height:1.2;white-space:nowrap;cursor:pointer;opacity:0;transition:opacity .5s ease .5s,transform .15s ease,background .15s ease;isolation:isolate;}
+#v3 .beat>.keepgo::after{content:"";position:absolute;inset:0;background:var(--grain);background-size:96px;mix-blend-mode:multiply;opacity:.16;pointer-events:none;z-index:-1;}
+#v3 .beat.in>.keepgo{opacity:1;}
+#v3 .beat>.keepgo:hover{background:var(--lime);transform:translate(calc(-50% - 1px),-2px) rotate(-1deg);}
+#v3 .beat:nth-child(even)>.keepgo{transform:translateX(-50%) rotate(1deg);}
+#v3 .beat:nth-child(even)>.keepgo:hover{transform:translate(calc(-50% - 1px),-2px) rotate(1deg);}
+#v3 .beat>.keepgo .ar{width:13px;height:13px;flex:none;transform:rotate(135deg);animation:nudge 1.6s ease-in-out infinite;}
+#v3 .beat>.keepgo .ar path{fill:var(--navy);}
+#v3 .beat>.keepgo .bounce{display:none;}
+@keyframes nudge{0%,100%{translate:0 0}50%{translate:0 3px}}
+@media(prefers-reduced-motion:reduce){#v3 .beat>.keepgo .ar{animation:none;}}
+@media(max-width:860px){#v3 .beat>.keepgo{white-space:normal;max-width:calc(100vw - 48px);text-align:left;bottom:22px;}}
+#v3 .beat{min-height:100vh;min-height:100svh;}
+#v3 .beat:first-of-type{min-height:calc(100vh - var(--topH,64px));min-height:calc(100svh - var(--topH,64px));}
+@media(max-width:860px){#v3 .beat,#v3 .beat:first-of-type{min-height:0;}}
+/* ---- story: scroll-linked motion ---- */
+html.story.sl #v3 .beat>*:not(.keepgo){transition:none!important;opacity:var(--o,1)!important;transform:translateY(var(--ty,0px))!important;}
+html.story.sl #v3 .beat>.keepgo{transition:opacity .4s ease!important;}
+html.story.sl #v3 .beat::before{transform:translateY(var(--py,0px)) scale(1.12);will-change:transform;}
+.storyprog{position:fixed;left:0;top:0;height:5px;width:0;background:var(--lime);z-index:70;display:none;box-shadow:0 1px 0 rgba(8,24,33,.35);}
+.storyct{position:fixed;left:max(16px,env(safe-area-inset-left,0px));bottom:max(16px,env(safe-area-inset-bottom,0px));z-index:70;display:none;background:var(--navy);color:var(--cream);border:2px solid var(--cream);box-shadow:3px 3px 0 rgba(8,24,33,.6);font-family:'Neue Haas';font-weight:700;font-size:12px;letter-spacing:.08em;padding:7px 10px;transform:rotate(-1.5deg);font-variant-numeric:tabular-nums;}
+.storyct b{color:var(--lime);}
+html.story .storyprog,html.story .storyct{display:block;}
+@media(max-width:860px){.storyct{display:none!important;}}
+#v3 .beat:nth-child(2)::before,#v3 .beat:nth-child(4)::before,#v3 .beat:nth-child(5)::before{display:none;}
+#v3 .beat.light{background:var(--warm);color:var(--navy);}
+#v3 .beat.light::before{display:block;background-image:var(--texnavy);mix-blend-mode:normal;opacity:.6;}
+/* ---- story: pinned graphic + steps ---- */
+#v3 .story{display:grid;grid-template-columns:minmax(0,46fr) minmax(0,54fr);align-items:start;}
+#v3 .pin{position:sticky;top:0;height:100vh;height:100svh;background:var(--navy);color:var(--cream);overflow:hidden;isolation:isolate;}
+#v3 .pin::before{content:"";position:absolute;inset:0;background-image:var(--tex);background-size:var(--texsize);mix-blend-mode:soft-light;opacity:.9;pointer-events:none;}
+#v3 .gfx{position:relative;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;padding:56px clamp(20px,5vw,64px) 48px;}
+#v3 .grid{width:min(62vh,100%,440px);height:auto;display:block;transition:opacity .6s ease,transform .7s cubic-bezier(.2,.7,.2,1);}
+#v3 .u{fill:var(--cream);opacity:.22;transition:fill .55s ease,opacity .55s ease;transition-delay:calc(var(--i) * 6ms);}
+#v3 .sliver{fill:var(--lime);opacity:0;transition:opacity .4s ease .5s;}
+#v3 .gfx[data-step="1"] .u{opacity:.85;}
+#v3 .gfx[data-step="2"] .u:nth-child(-n+42){fill:var(--lime);opacity:1;}
+#v3 .gfx[data-step="3"] .u:nth-child(-n+42){fill:var(--lime);opacity:.5;}
+#v3 .gfx[data-step="3"] .u:nth-child(-n+14){fill:var(--coral);opacity:1;}
+#v3 .gfx[data-step="4"] .u{opacity:.07;}
+#v3 .gfx[data-step="4"] .u:nth-child(-n+14){fill:var(--coral);opacity:1;}
+#v3 .gfx[data-step="4"] .sliver{opacity:1;}
+#v3 .gfx[data-step="5"] .grid{opacity:0;transform:scale(.88);}
+#v3 .gfx[data-step="6"] .u{opacity:.85;}
+#v3 .gcap{text-align:center;min-height:92px;transition:opacity .35s ease;}
+#v3 .gcap b{display:block;font-family:'Arizona Flare';font-weight:300;font-size:clamp(44px,6.5vw,88px);line-height:.95;color:var(--lime);letter-spacing:-.01em;}
+#v3 .gcap span{display:block;margin-top:10px;font-size:clamp(13px,1.2vw,16px);line-height:1.4;max-width:34ch;margin-left:auto;margin-right:auto;}
+#v3 .gfx[data-step="5"] .gcap{opacity:0;}
+#v3 .pin .v3card{position:absolute;left:50%;top:50%;width:min(340px,80%);transform:translate(-50%,-50%) scale(.9) rotate(-3deg);opacity:0;transition:opacity .5s ease,transform .6s cubic-bezier(.2,.8,.3,1.15);pointer-events:none;margin:0;}
+#v3 .gfx[data-step="5"] .v3card{opacity:1;transform:translate(-50%,-50%) rotate(var(--tilt,-2deg));pointer-events:auto;}
+#v3 .steps .beat{padding-left:clamp(24px,5vw,80px);padding-right:clamp(24px,5vw,80px);}
+#v3 .steps .beat::before{background-size:calc(var(--texsize) * .8);}
+#v3 .b5row{grid-template-columns:1fr;}
+.storyct{left:auto;right:max(16px,env(safe-area-inset-right,0px));}
+@media(prefers-reduced-motion:reduce){#v3 .u,#v3 .grid,#v3 .pin .v3card,#v3 .gcap,#v3 .sliver{transition:none!important;}}
+@media(max-width:860px){
+ #v3 .story{grid-template-columns:1fr;}
+ #v3 .pin{height:42vh;height:42svh;z-index:3;}
+ #v3 .gfx{flex-direction:row;gap:18px;padding:18px 20px;}
+ #v3 .grid{width:min(30vh,42vw);}
+ #v3 .gcap{text-align:left;min-height:0;flex:1;}
+ #v3 .gcap b{font-size:clamp(34px,10vw,52px);} #v3 .gcap span{margin-left:0;font-size:13px;}
+ #v3 .pin .v3card{width:min(260px,70%);}
+ #v3 .steps .beat,#v3 .steps .beat:first-of-type{min-height:0;padding-top:48px;padding-bottom:92px;scroll-margin-top:42svh;}
+}
+#v3 .story{grid-template-columns:minmax(0,54fr) minmax(0,46fr);}
+#v3 .pin{order:2;}
+#v3 .steps{order:1;}
+.storyct{left:max(16px,env(safe-area-inset-left,0px));right:auto;}
+@media(max-width:860px){#v3 .story{grid-template-columns:1fr;}#v3 .pin{order:1;}#v3 .steps{order:2;}}
 </style></head><body>
 
 <div class="top"><div class="topin">
@@ -624,17 +699,19 @@ select.srhide{position:absolute!important;width:1px;height:1px;opacity:0;pointer
 </div></section></div>
 
 <!-- ============ STORY ============ -->
-<div class="view" id="v3"><div class="w">
-  <section class="beat"><div class="eyebrow" style="color:var(--navy)">Shelby County</div>
+<div class="view" id="v3"><div class="w"><div class="story"><div class="pin"><div class="gfx" id="gfx" data-step="1" aria-hidden="true"><svg class="grid" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet"><rect class="u" style="--i:0" x="0" y="0" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:1" x="10" y="0" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:2" x="20" y="0" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:3" x="30" y="0" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:4" x="40" y="0" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:5" x="50" y="0" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:6" x="60" y="0" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:7" x="70" y="0" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:8" x="80" y="0" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:9" x="90" y="0" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:10" x="0" y="10" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:11" x="10" y="10" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:12" x="20" y="10" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:13" x="30" y="10" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:14" x="40" y="10" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:15" x="50" y="10" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:16" x="60" y="10" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:17" x="70" y="10" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:18" x="80" y="10" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:19" x="90" y="10" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:20" x="0" y="20" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:21" x="10" y="20" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:22" x="20" y="20" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:23" x="30" y="20" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:24" x="40" y="20" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:25" x="50" y="20" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:26" x="60" y="20" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:27" x="70" y="20" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:28" x="80" y="20" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:29" x="90" y="20" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:30" x="0" y="30" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:31" x="10" y="30" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:32" x="20" y="30" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:33" x="30" y="30" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:34" x="40" y="30" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:35" x="50" y="30" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:36" x="60" y="30" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:37" x="70" y="30" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:38" x="80" y="30" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:39" x="90" y="30" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:40" x="0" y="40" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:41" x="10" y="40" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:42" x="20" y="40" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:43" x="30" y="40" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:44" x="40" y="40" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:45" x="50" y="40" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:46" x="60" y="40" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:47" x="70" y="40" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:48" x="80" y="40" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:49" x="90" y="40" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:50" x="0" y="50" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:51" x="10" y="50" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:52" x="20" y="50" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:53" x="30" y="50" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:54" x="40" y="50" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:55" x="50" y="50" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:56" x="60" y="50" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:57" x="70" y="50" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:58" x="80" y="50" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:59" x="90" y="50" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:60" x="0" y="60" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:61" x="10" y="60" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:62" x="20" y="60" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:63" x="30" y="60" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:64" x="40" y="60" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:65" x="50" y="60" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:66" x="60" y="60" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:67" x="70" y="60" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:68" x="80" y="60" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:69" x="90" y="60" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:70" x="0" y="70" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:71" x="10" y="70" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:72" x="20" y="70" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:73" x="30" y="70" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:74" x="40" y="70" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:75" x="50" y="70" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:76" x="60" y="70" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:77" x="70" y="70" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:78" x="80" y="70" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:79" x="90" y="70" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:80" x="0" y="80" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:81" x="10" y="80" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:82" x="20" y="80" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:83" x="30" y="80" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:84" x="40" y="80" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:85" x="50" y="80" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:86" x="60" y="80" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:87" x="70" y="80" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:88" x="80" y="80" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:89" x="90" y="80" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:90" x="0" y="90" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:91" x="10" y="90" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:92" x="20" y="90" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:93" x="30" y="90" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:94" x="40" y="90" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:95" x="50" y="90" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:96" x="60" y="90" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:97" x="70" y="90" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:98" x="80" y="90" width="8.6" height="8.6" rx=".6"/><rect class="u" style="--i:99" x="90" y="90" width="8.6" height="8.6" rx=".6"/><rect class="sliver" x="40.7" y="10.7" width="3.4" height="8.6" rx=".6"/></svg><div class="gcap"><b id="gcapb"></b><span id="gcaps"></span></div><div class="pol tilt v3card"><div class="inner" style="min-width:300px">
+      <div class="wash w-green"></div>
+      <div class="num" id="big3">0</div><div class="scr" id="bigunit3"></div></div></div></div></div><div class="steps">
+  <section class="beat light"><div class="eyebrow" style="color:var(--navy)">Shelby County</div>
     <h2 style="max-width:22ch">Every year, Shelby County decides where <mark>$507 million</mark> goes.</h2>
     <p class="lede">It is published in a budget book hundreds of pages long. It is entirely public. Almost nobody reads it.</p>
-        <button class="keepgo" onclick="nextBeat(this)" aria-label="Next">Keep scrolling<span class="bounce" aria-hidden="true">&darr;</span></button></section>
+        <button class="keepgo" onclick="nextBeat(this)">Next: where forty cents of every dollar goes<svg class="ar" aria-hidden="true" viewBox="0 0 13 13" fill="none"><path d="M11.1268 0H0.735027V1.87827H9.76655L0 11.6722L1.32506 13L11.1268 3.17163V12.2991H13V1.87827V0H11.1268Z"/></svg></button></section>
 
-  <section class="beat dark"><div class="beatnum" data-n="41.8" data-suf="%">41.8%</div>
+  <section class="beat forest"><div class="beatnum" data-n="41.8" data-suf="%">41.8%</div>
     <div class="beatlab"><mark>of the general fund goes to the Sheriff</mark></div>
     <h2>More than <mark>forty cents</mark> of every dollar.</h2>
     <p class="lede">$212 million out of a $507.5 million general fund. Of that, $70.3 million runs the jail &mdash; and another $45.9 million runs the Corrections Center from a separate fund.</p>
-    <button class="keepgo" onclick="nextBeat(this)" aria-label="Next">Keep going<span class="bounce" aria-hidden="true">&darr;</span></button></section>
+    <button class="keepgo" onclick="nextBeat(this)">Next: what the county says it wants<svg class="ar" aria-hidden="true" viewBox="0 0 13 13" fill="none"><path d="M11.1268 0H0.735027V1.87827H9.76655L0 11.6722L1.32506 13L11.1268 3.17163V12.2991H13V1.87827V0H11.1268Z"/></svg></button></section>
 
   <section class="beat">
     <h2>The county says it wants to <mark>shrink</mark> the jail.</h2>
@@ -644,14 +721,14 @@ select.srhide{position:absolute!important;width:1px;height:1px;opacity:0;pointer
       <p>&ldquo;Reduce the jail population by reforming the bail system.&rdquo;</p>
       <a class="qsrc" href="https://www.shelbycountytn.gov/Archive.aspx?ADID=15991" target="_blank" rel="noopener">Shelby County FY2026 Adopted Budget &middot; Mission &amp; Strategies, goals 2-a and 2-b &#8599;</a>
     </div>
-    <button class="keepgo" onclick="nextBeat(this)" aria-label="Next">Keep going<span class="bounce" aria-hidden="true">&darr;</span></button></section>
+    <button class="keepgo" onclick="nextBeat(this)">Next: how those goals get funded<svg class="ar" aria-hidden="true" viewBox="0 0 13 13" fill="none"><path d="M11.1268 0H0.735027V1.87827H9.76655L0 11.6722L1.32506 13L11.1268 3.17163V12.2991H13V1.87827V0H11.1268Z"/></svg></button></section>
 
-  <section class="beat forest"><div class="beatnum" data-n="36" data-suf="&times;">36&times;</div>
+  <section class="beat dark"><div class="beatnum" data-n="36" data-suf="&times;">36&times;</div>
     <div class="beatlab"><mark>more on the jail than on diversion</mark></div>
     <h2>Here is how we <mark>fund</mark> those goals.</h2>
     <div class="bars" id="b2bars"></div>
     <p class="prov">Shelby County FY2026 Adopted Budget. Community &amp; Diversion Services sits inside the Community Services division.</p>
-    <button class="keepgo" onclick="nextBeat(this)" aria-label="Next">Keep going<span class="bounce" aria-hidden="true">&darr;</span></button></section>
+    <button class="keepgo" onclick="nextBeat(this)">Next: what a different choice gets us<svg class="ar" aria-hidden="true" viewBox="0 0 13 13" fill="none"><path d="M11.1268 0H0.735027V1.87827H9.76655L0 11.6722L1.32506 13L11.1268 3.17163V12.2991H13V1.87827V0H11.1268Z"/></svg></button></section>
 
   <section class="beat"><h2>So what would a <mark>different choice</mark> get us?</h2>
     <div class="picker" id="outs3" style="margin-bottom:20px"></div>
@@ -660,15 +737,13 @@ select.srhide{position:absolute!important;width:1px;height:1px;opacity:0;pointer
         <div class="dialamt">less for the jail<b id="amt3"></b></div></div>
       <input type="range" id="dial3" min="1" max="25" value="5">
       <div class="ticks"><span>1%</span><span>25%</span></div></div>
-    <div class="pol tilt v3card"><div class="inner" style="min-width:300px">
-      <div class="wash w-green"></div>
-      <div class="num" id="big3">0</div><div class="scr" id="bigunit3"></div></div></div></div>
-    <button class="keepgo" onclick="nextBeat(this)" aria-label="Next">Keep going<span class="bounce" aria-hidden="true">&darr;</span></button></section>
+    </div>
+    <button class="keepgo" onclick="nextBeat(this)">Next: whose numbers these are<svg class="ar" aria-hidden="true" viewBox="0 0 13 13" fill="none"><path d="M11.1268 0H0.735027V1.87827H9.76655L0 11.6722L1.32506 13L11.1268 3.17163V12.2991H13V1.87827V0H11.1268Z"/></svg></button></section>
 
-  <section class="beat dark"><h2>These are not contested numbers. They are the <mark>county&rsquo;s own.</mark></h2>
+  <section class="beat forest"><h2>These are not contested numbers. They are the <mark>county&rsquo;s own.</mark></h2>
     <p class="lede">Shelby County publishes all of it. What it means, and what to do about it, is a separate question &mdash; and it belongs to you.</p>
     <div class="cardacts v3acts"><button class="tab" onclick="openShare(this)" aria-haspopup="dialog" aria-controls="share">Share your choice<svg class="ar" viewBox="0 0 13 13" fill="none"><path d="M11.1268 0H0.735027V1.87827H9.76655L0 11.6722L1.32506 13L11.1268 3.17163V12.2991H13V1.87827V0H11.1268Z" fill="#0e2734"/></svg></button><button class="tab" onclick="openMeth(this)" aria-haspopup="dialog" aria-controls="meth">Methodology<span aria-hidden="true" style="font-size:15px;line-height:0;margin-left:2px">+</span></button></div></section>
-</div></div>
+</div></div></div></div>
 
 <!-- ============ RECEIPT ============ -->
 <div class="view" id="v4"><section class="sec warm"><div class="w">
@@ -1016,4 +1091,56 @@ function closeShare(){$('share').classList.remove('on');document.body.style.over
 function copyTo(a){try{navigator.clipboard.writeText(copyTxt);}catch(e){}}
 function closeMeth(){$('meth').classList.remove('on');document.body.style.overflow='';if(methFrom)methFrom.focus();}
 document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeMenus();closeHamb();if($('meth').classList.contains('on'))closeMeth();if($('share').classList.contains('on'))closeShare();}});
+
+(function(){
+ var prog=document.createElement('div');prog.className='storyprog';prog.setAttribute('aria-hidden','true');
+ var ct=document.createElement('div');ct.className='storyct';ct.setAttribute('aria-hidden','true');ct.innerHTML='<b>01</b> / 06';
+ document.body.appendChild(prog);document.body.appendChild(ct);
+ var beats=null,ticking=false,ease=function(t){return 1-Math.pow(1-t,3);};
+ function clamp(v){return v<0?0:v>1?1:v;}
+ function pad(n){return (n<10?'0':'')+n;}
+ function frame(){ticking=false;
+  if(!document.documentElement.classList.contains('story'))return;
+  if(!beats)beats=[].slice.call(document.querySelectorAll('#v3 .beat'));
+  var vh=window.innerHeight,cur=0,first=beats[0].getBoundingClientRect(),last=beats[beats.length-1].getBoundingClientRect();
+  var total=(last.bottom-first.top)-vh,done=clamp((-first.top)/(total>0?total:1));
+  prog.style.width=(done*100).toFixed(2)+'%';
+  beats.forEach(function(b,i){var r=b.getBoundingClientRect();
+   if(r.top<vh*0.5&&r.bottom>vh*0.5)cur=i;
+   var pin=clamp((vh-r.top)/(vh*0.55)),pout=clamp(r.bottom/(vh*0.35)),e=Math.min(ease(pin),ease(pout));
+   b.style.setProperty('--py',(((r.top+r.height/2)-vh/2)*-0.08).toFixed(1)+'px');
+   var kids=b.children,n=0;
+   for(var k=0;k<kids.length;k++){var c=kids[k];if(c.classList.contains('keepgo'))continue;
+    var d=n*0.09,pp=clamp((Math.min(pin,1)-d)/(1-d)),o=Math.min(ease(pp),ease(pout));
+    c.style.setProperty('--o',o.toFixed(3));c.style.setProperty('--ty',((1-o)*34).toFixed(1)+'px');n++;}
+  });
+  ct.innerHTML='<b>'+pad(cur+1)+'</b> / '+pad(beats.length);
+ }
+ function onScroll(){if(!ticking){ticking=true;requestAnimationFrame(frame);}}
+ if(!REDUCED){document.documentElement.classList.add('sl');window.addEventListener('scroll',onScroll,{passive:true});window.addEventListener('resize',onScroll);
+  var mo=new MutationObserver(function(){beats=null;onScroll();});mo.observe(document.documentElement,{attributes:true,attributeFilter:['class']});
+  onScroll();}
+})();
+
+(function(){
+ var CAP=[["$507.5M","Shelby County's general fund, FY2026. Each square is about $5 million."],
+  ["41.8%","$212 million of it goes to the Sheriff. Forty-two squares."],
+  ["$70.3M","runs the jail for one year. Fourteen squares, inside the Sheriff's forty-two."],
+  ["36×","the jail (coral) against Community &amp; Diversion Services (the lime sliver, $1.95M)."],
+  ["",""],
+  ["100%","public. Every figure here is from the county's own adopted budget."]];
+ var g=document.getElementById('gfx');if(!g)return;
+ var beats=null,t=false;
+ function setStep(n){if(g.getAttribute('data-step')===String(n))return;g.setAttribute('data-step',n);var c=CAP[n-1];document.getElementById('gcapb').innerHTML=c[0];document.getElementById('gcaps').innerHTML=c[1];}
+ function fr(){t=false;if(!document.documentElement.classList.contains('story'))return;
+  if(!beats)beats=[].slice.call(document.querySelectorAll('#v3 .steps .beat'));
+  var vh=window.innerHeight,mid=vh*0.5,cur=0;
+  if(window.innerWidth<=860)mid=vh*0.42+90;
+  for(var i=0;i<beats.length;i++){var r=beats[i].getBoundingClientRect();if(r.top<=mid)cur=i;}
+  setStep(cur+1);}
+ function on(){if(!t){t=true;requestAnimationFrame(fr);}}
+ window.addEventListener('scroll',on,{passive:true});window.addEventListener('resize',on);
+ new MutationObserver(function(){beats=null;on();}).observe(document.documentElement,{attributes:true,attributeFilter:['class']});
+ setStep(1);on();
+})();
 </script></body></html>
