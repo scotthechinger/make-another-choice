@@ -967,7 +967,7 @@ function render(){
  if($("pct4")){$("pct4").textContent=pct;$("line4").textContent=L.n.toLowerCase();}
  countTo($("big4"),Math.floor(c));
  if($("bigunit4"))$("bigunit4").innerHTML="<mark>"+word.replace(/\n/g," ")+"</mark>";
- copyTxt="Shelby County budgets "+big$(L.v)+" for "+L.n.toLowerCase()+". I\u2019d make another choice: moving "+pct+"% of that money ("+big$(amt)+") could cover "+txt+" "+word.replace(/\n/g," ")+".\n\nShelby County spends 36 times more on the jail than on community and diversion services. Freedom works and it\u2019s affordable.\n\nIt\u2019s time to find the courage to make another choice. makeanotherchoice.org";
+ copyTxt="Shelby County budgets "+big$(L.v)+" for "+L.n.toLowerCase()+". I\u2019d make another choice: moving "+pct+"% of that money ("+big$(amt)+") could cover "+txt+" "+word.replace(/\n/g," ")+".\n\nShelby County spends 36 times more on the jail than on community and diversion services. But freedom works and it\u2019s affordable.\n\nIt\u2019s time to find the courage to make another choice. makeanotherchoice.org";
  if($("shareTxt")){$("shareTxt").textContent=copyTxt;var enc=encodeURIComponent(copyTxt);$("shB").href="https://bsky.app/intent/compose?text="+enc;$("shM").href="mailto:?subject="+encodeURIComponent("Make another choice")+"&body="+enc;$("shS").href="sms:?&body="+enc;}
  render3();
 }
