@@ -1,0 +1,21 @@
+{
+ "name": "Make Another Choice",
+ "short_name": "Another Choice",
+ "description": "Shelby County budgets $70 million a year for the jail. Move one dial and see what the same money could get instead.",
+ "start_url": "/",
+ "display": "browser",
+ "background_color": "#faf4e8",
+ "theme_color": "#0e2734",
+ "icons": [
+  {
+   "src": "/icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  },
+  {
+   "src": "/apple-touch-icon.png",
+   "sizes": "180x180",
+   "type": "image/png"
+  }
+ ]
+}
