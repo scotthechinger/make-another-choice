@@ -602,6 +602,19 @@ html.story .storyprog,html.story .storyct{display:block;}
 .top .viewmenu{position:relative;z-index:95;} .top .topin{position:relative;z-index:30;}
 .bigword{line-height:1;}
 @media(max-width:860px){.split{gap:30px;} .split .stack{margin-top:16px;margin-bottom:10px;}}
+
+/* R100 */
+.scrollnav .hrow{display:flex;align-items:stretch;}
+.hname{display:flex;align-items:center;gap:7px;background:var(--navy);color:var(--cream);border:0;border-right:1px solid rgba(250,244,232,.35);padding:0 14px;height:48px;font-family:'Neue Haas',Helvetica,Arial,sans-serif;font-weight:700;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;white-space:nowrap;}
+.hname small{font-weight:400;letter-spacing:.01em;text-transform:none;opacity:.78;font-size:12.5px;}
+@media(max-width:380px){.hname small{display:none;}}
+@media(min-width:1024px){
+ .top{position:sticky;top:0;}
+ .scrollnav{display:none;}
+ #v3 .pin{top:var(--topH,64px);height:calc(100vh - var(--topH,64px));height:calc(100svh - var(--topH,64px));}
+ .storyprog{top:var(--topH,64px);}
+}
+@media(max-width:700px){#v3 .bar{grid-template-columns:minmax(0,1fr) auto;gap:6px 12px;padding:9px 0;} #v3 .bar .bl{grid-column:1/-1;}}
 </style></head><body>
 
 <div class="top"><div class="topin">
@@ -611,7 +624,7 @@ html.story .storyprog,html.story .storyct{display:block;}
   <div class="grp r"><a class="tab nv" href="https://makethemknown.org" target="_blank" rel="noopener">Make Them Known<svg class="ar" viewBox="0 0 13 13" fill="none"><path d="M11.1268 0H0.735027V1.87827H9.76655L0 11.6722L1.32506 13L11.1268 3.17163V12.2991H13V1.87827V0H11.1268Z" fill="#0e2734"/></svg></a></div>
 </div></div>
 
-<div class="scrollnav" id="scrollnav"><button class="hamb" id="hamb" aria-label="Open menu" aria-expanded="false" aria-controls="hmenu" onclick="toggleHamb()"><svg viewBox="0 0 48 48" aria-hidden="true" class="hico"><rect width="48" height="48" class="hfill"/><rect x="0.5" y="0.5" width="47" height="47" fill="none" stroke-width="1" class="hstroke"/><g class="hlines hstroke" stroke-width="2"><line x1="16" y1="17.5" x2="32" y2="17.5"/><line x1="16" y1="24" x2="32" y2="24"/><line x1="16" y1="30.5" x2="32" y2="30.5"/></g><g class="hx hstroke" stroke-width="1.5"><path d="M17 17 L31 31 M31 17 L17 31"/></g></svg></button><div class="hmenu" id="hmenu"><button class="hlink" data-g="V" onclick="setView('v1',this)">Explore</button><button class="hlink" data-g="V" onclick="setView('v3',this)">The story</button><button class="hlink" data-g="V" onclick="setView('v2',this)">One dial</button><button class="hlink" data-g="V" onclick="setView('v4',this)">Receipt</button><span class="hsep"></span><button class="hlink" onclick="closeHamb();openShare(this)">Share your choice</button><a class="hlink" href="https://makethemknown.org" target="_blank" rel="noopener">Make Them Known<svg class="ar" viewBox="0 0 13 13" fill="none"><path d="M11.1268 0H0.735027V1.87827H9.76655L0 11.6722L1.32506 13L11.1268 3.17163V12.2991H13V1.87827V0H11.1268Z" fill="#0e2734"/></svg></a></div></div>
+<div class="scrollnav" id="scrollnav"><div class="hrow"><button class="hname" onclick="toggleHamb()" tabindex="-1" aria-hidden="true"><span class="vlabel">Explore</span><small>&middot; more ways in</small></button><button class="hamb" id="hamb" aria-label="Open menu" aria-expanded="false" aria-controls="hmenu" onclick="toggleHamb()"><svg viewBox="0 0 48 48" aria-hidden="true" class="hico"><rect width="48" height="48" class="hfill"/><rect x="0.5" y="0.5" width="47" height="47" fill="none" stroke-width="1" class="hstroke"/><g class="hlines hstroke" stroke-width="2"><line x1="16" y1="17.5" x2="32" y2="17.5"/><line x1="16" y1="24" x2="32" y2="24"/><line x1="16" y1="30.5" x2="32" y2="30.5"/></g><g class="hx hstroke" stroke-width="1.5"><path d="M17 17 L31 31 M31 17 L17 31"/></g></svg></button></div><div class="hmenu" id="hmenu"><button class="hlink" data-g="V" onclick="setView('v1',this)">Explore</button><button class="hlink" data-g="V" onclick="setView('v3',this)">The story</button><button class="hlink" data-g="V" onclick="setView('v2',this)">One dial</button><button class="hlink" data-g="V" onclick="setView('v4',this)">Receipt</button><span class="hsep"></span><button class="hlink" onclick="closeHamb();openShare(this)">Share your choice</button><a class="hlink" href="https://makethemknown.org" target="_blank" rel="noopener">Make Them Known<svg class="ar" viewBox="0 0 13 13" fill="none"><path d="M11.1268 0H0.735027V1.87827H9.76655L0 11.6722L1.32506 13L11.1268 3.17163V12.2991H13V1.87827V0H11.1268Z" fill="#0e2734"/></svg></a></div></div>
 <!-- ============ EXPLORE ============ -->
 <div class="view on" id="v1">
 
@@ -731,7 +744,7 @@ html.story .storyprog,html.story .storyct{display:block;}
     <div class="beatlab"><mark>more on the jail than on alternatives to it</mark></div>
     <h2>Here is how we <mark>fund</mark> those goals.</h2>
     <div class="bars" id="b2bars"></div>
-    <p class="prov">Shelby County FY2026 Adopted Budget. Alternatives to jail is the FY2026 spending on Pretrial Services, Justice Programs and Behavioral Health Services (departments 4811, 4812 and 4813), the lines whose stated mission is alternatives to incarceration.</p>
+    <p class="prov">Shelby County FY2026 Adopted Budget. The three lines under the jail are everything the county spends on alternatives to it, $7,450,859 in all: Pretrial Services, Justice Programs and Behavioral Health Services (departments 4811, 4812 and 4813).</p>
     <button class="keepgo" onclick="nextBeat(this)">Next: what a different choice gets us<svg class="ar" aria-hidden="true" viewBox="0 0 13 13" fill="none"><path d="M11.1268 0H0.735027V1.87827H9.76655L0 11.6722L1.32506 13L11.1268 3.17163V12.2991H13V1.87827V0H11.1268Z"/></svg></button></section>
 
   <section class="beat"><h2>So what would a <mark>different choice</mark> get us?</h2>
@@ -838,7 +851,7 @@ html.story .storyprog,html.story .storyct{display:block;}
       <p>Each cost is a per-unit figure. Published means the number appears as is in a public document. Reconstructed means it was calculated from public figures, and the calculation is shown.</p>
       <ul class="mlist" id="mlist"></ul></div>
     <div class="msec"><b class="ml">04 / Alternatives to jail: $7,450,859</b>
-      <p>The comparison in the story and the share text sets the jail&rsquo;s $70,289,717 against $7,450,859, the county&rsquo;s FY2026 spending across all funds on Pretrial Services and Justice Programs (general fund, departments 4811 and 4812) and Behavioral Health Services (all funds, department 4813). These are the budget lines whose stated mission is alternatives to incarceration at every stage: before arrest, after arrest, before trial and after conviction. Excluded: general legal representation, child support, law enforcement, victim services, ordinary incarceration costs, opioid settlement funding, the Jericho Project and mixed-purpose grants. Pretrial Services interviewed 19,648 people in the budget year, about $379 per person across these lines. Compiled by Just City with the former director of the Division of Community Services from the FY2026 Adopted Budget, pp. 182 and 308.</p></div>
+      <p>The comparison in the story and the share text sets the jail&rsquo;s $70,289,717 against $7,450,859, the county&rsquo;s FY2026 spending across all funds on Pretrial Services and Justice Programs (general fund, departments 4811 and 4812) and Behavioral Health Services (all funds, department 4813). These are the budget lines whose stated mission is alternatives to incarceration at every stage: before arrest, after arrest, before trial and after conviction. Pretrial Services, $4,926,846; Justice Programs, $748,513; Behavioral Health Services, $1,775,500. Excluded: general legal representation, child support, law enforcement, victim services, ordinary incarceration costs, opioid settlement funding and mixed-purpose grants. Probation (Community &amp; Diversion Services, department 4806) is also excluded: supervision that can end in reincarceration is counted here as part of the carceral system, not an alternative to it. Compiled by Just City from the FY2026 Adopted Budget, pp. 182 and 308, and confirmed with a former employee familiar with the Division of Community Services budgeting process.</p></div>
   </div>
 </div>
 
@@ -882,8 +895,8 @@ var UNITS=[
  {n:"Mental health care",u:"https://www.shelbycountytn.gov/DocumentCenter/View/44390/ShelbyCountyDivisionofCommunityServicesFY25PerformanceReport",s:"people in care,\nfor a year",s1:"person in care, for a year",c:9152,st:"verified",badge:"Reconstructed",src:"Shelby County Behavioral Health Services FY2026 budget ($1,775,500, department 4813) divided by the 194 people served in FY2025 (FY2025 performance report, p. 5)",by:"Shelby County Behavioral Health Services"},
  {n:"School counselors",u:"https://www.scsk12.org",s:"school\ncounselors",s1:"school counselor",c:71691,st:"verified",badge:"Reconstructed",src:"Memphis-Shelby County Schools 2026-27 salary schedule: $61,458 starting salary for an 11-month counselor with a master’s degree, plus 9% retirement and 7.65% payroll taxes",by:"the Memphis-Shelby County Schools district office"},
  {n:"Summer job placements",u:"https://www.memphistn.gov",s:"summer job placements\nfor young people",s1:"summer job placement for a young person",c:235,st:"verified",badge:"Reconstructed",src:"City of Memphis MPLOY Youth program: $423,856 (2024 ARPA Recovery Plan, p. 35) divided by 1,800 paid placements in summer 2025. Program cost only; the young people’s wages are not included",by:"the City of Memphis Office of Public Affairs"},
- {n:"Potholes",u:"https://www.tn.gov/tdot",s:"potholes\nrepaired",s1:"pothole repaired",c:23,st:"verified",badge:"Reconstructed",src:"TDOT FY2025 Region 4 contractor pricing: $190 a ton for permanent asphalt repair and $8 a square foot for infrared repair, averaged across the county’s even split of the two methods for a 2-by-2-foot patch",by:"Shelby County Asphalt"},
- {n:"Libraries",u:"https://shelby.granicus.com/MinutesViewer.php?clip_id=2941&view_id=4",s:"library branches kept\nopen for a year",s1:"library branch kept open for a year",c:639742,st:"verified",badge:"Published",src:"Shelby County Board of Commissioners, Budget and Finance Committee, July 22, 2026, agenda item 27: FY2026-27 operating agreement for the East Shelby Branch Library, the one branch the county funds",by:"the East Shelby Branch Library"}
+ {n:"Potholes",u:"https://www.tn.gov/tdot",s:"potholes\nrepaired",s1:"pothole repaired",c:23,st:"verified",badge:"Reconstructed",src:"TDOT FY2025 Region 4 contractor pricing: $190 a ton for permanent asphalt repair and $8 a square foot for infrared repair, averaged across the county’s even split of the two methods for a 2-by-2-foot patch",by:"Shelby County Public Works"},
+ {n:"Libraries",u:"https://shelby.granicus.com/MinutesViewer.php?clip_id=2941&view_id=4",s:"library branches kept\nopen for a year",s1:"library branch kept open for a year",c:639742,st:"verified",badge:"Published",src:"Shelby County Board of Commissioners, Budget and Finance Committee, July 22, 2026, agenda item 27: FY2026-27 operating agreement for the East Shelby Branch Library, the one branch the county funds",by:"Memphis Public Libraries"}
 ];
 var RECEIPT=[["Sheriff",212021062],["Judicial",97665192],["Elected Officials",50927625],
  ["Administration & Finance",50724123],["Public Works",30877749],["Health Services",25200477],
@@ -981,11 +994,10 @@ function render3(){
  if($("amt3"))$("amt3").textContent=big$(amt);
  countTo($("big3"),Math.floor(c));
  if($("bigunit3"))$("bigunit3").innerHTML="<mark>"+(Math.floor(c)===1?U.s1:U.s).replace(/\n/g,"<br>")+"</mark>";
- var bars=[["The jail",70289717],["Corrections Center",45910484],["Youth Justice Center",11683684],
-  ["Crime Victims Center",4600924],["Alternatives to jail",7450859]];
+ var bars=[["The jail",70289717],["Pretrial Services",4926846],["Justice Programs",748513],["Behavioral Health Services",1775500]];
  var mx=bars[0][1];
  if($("b2bars"))$("b2bars").innerHTML=bars.map(function(b,i){
-  return '<div class="bar'+(i>2?" alt":"")+'"><div class="bl">'+b[0]+'</div><div class="bt"><i data-w="'+
+  return '<div class="bar'+(i>0?" alt":"")+'"><div class="bl">'+b[0]+'</div><div class="bt"><i data-w="'+
    Math.max(b[1]/mx*100,.5)+'%"></i></div><div class="bv">'+usd(b[1])+'</div></div>';}).join("");
  var bb=document.querySelector('#b2bars').closest('.beat');if(bb&&bb.classList.contains('in'))setTimeout(function(){drawBars(true);},60);
 }
