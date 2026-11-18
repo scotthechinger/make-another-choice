@@ -637,7 +637,9 @@ html.story .storyprog,html.story .storyct{display:block;}
 .scrollnav.moving .hname{max-width:280px;padding:0 14px;opacity:1;border-right-width:1px;}
 @media(prefers-reduced-motion:reduce){.hname{transition:none;}}
 @media(max-width:700px){#v3 .bar{grid-template-columns:minmax(0,1fr) auto;gap:6px 12px;padding:9px 0;} #v3 .bar .bl{grid-column:1/-1;}}
-</style></head><body>
+</style>
+    <script>window.plausible=window.plausible||function(){(window.plausible.q=window.plausible.q||[]).push(arguments)};(function(){if(!/(^|\.)makeanotherchoice\.org$/.test(location.hostname))return;var s=document.createElement('script');s.defer=true;s.setAttribute('data-domain','makeanotherchoice.org');s.src='https://plausible.io/js/script.outbound-links.js';document.head.appendChild(s);})();</script>
+    </head><body>
 
 <div class="top"><div class="topin">
   <div class="grp l"><div class="viewmenu"><button class="tab nv vtrig" aria-haspopup="true" aria-expanded="false" onclick="toggleMenu(this)">Choose your experience<svg class="chev" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></button><div class="vmenu"><button class="vrow on" data-g="V" data-name="Explore" onclick="setView('v1',this)"><b>Explore</b><span>Pick a line item, move one dial, see what we get for the same money.</span></button><button class="vrow" data-g="V" data-name="The story" onclick="setView('v3',this)"><b>The story</b><span>Scroll the numbers one beat at a time.</span></button><button class="vrow" data-g="V" data-name="One dial" onclick="setView('v2',this)"><b>One dial</b><span>The whole transaction on a single screen.</span></button><button class="vrow" data-g="V" data-name="Receipt" onclick="setView('v4',this)"><b>Receipt</b><span>The general fund, printed like a receipt.</span></button></div></div>
@@ -1178,4 +1180,13 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeMenus(
  new MutationObserver(function(){beats=null;on();}).observe(document.documentElement,{attributes:true,attributeFilter:['class']});
  setStep(1);on();
 })();
-</script></body></html>
+
+    (function(){function ev(n,p){try{window.plausible(n,{props:p||{}});}catch(e){}}
+    var NM={v1:'Explore',v2:'One dial',v3:'The story',v4:'Receipt'};
+    var _sv=setView;setView=function(v,el){_sv(v,el);ev('View',{view:NM[v]||v});};
+    var _os=openShare;openShare=function(b){_os(b);var on=document.querySelector('.view.on');ev('Share opened',{view:on?(NM[on.id]||on.id):''});};
+    var _om=openMeth;openMeth=function(b){_om(b);ev('Methodology opened');};
+    var _ci=copyIt;copyIt=function(b){_ci(b);ev('Share',{channel:'copy'});};
+    document.addEventListener('click',function(e){var a=e.target.closest('#shB,#shI,#shM,#shS,a[download]');if(!a)return;var ch=a.id==='shB'?'bluesky':a.id==='shI'?'instagram':a.id==='shM'?'email':a.id==='shS'?'text':'download';ev('Share',{channel:ch});});
+    })();
+    </script></body></html>
