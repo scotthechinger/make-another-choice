@@ -1067,7 +1067,7 @@ function heroShow(k){var card=$('hcard');if(!card)return;card.classList.add('swa
 function heroCycle(){hci=(hci+1)%HC.length;heroShow(hci);}
 if(!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)){hTimer=setInterval(heroCycle,3600);}
 var methFrom=null;
-function openMeth(b){methFrom=b;$('mlist').innerHTML=UNITS.map(function(u){return '<li><b>'+u.n+'</b><span>'+usd(u.c)+' per '+u.s1.split(',')[0]+'. '+u.src+'.'+(u.by?' Confirmed with '+u.by+'.':'')+(u.u?' <a href="'+u.u+'" target="_blank" rel="noopener">'+u.u.replace(/^https?:\/\/(www\.)?/,'').split('/')[0]+' &#8599;</a>':'')+'<br><span class="st">'+u.badge+'</span></span></li>';}).join('');
+function openMeth(b){methFrom=b;syncStory();$('mlist').innerHTML=UNITS.map(function(u){return '<li><b>'+u.n+'</b><span>'+usd(u.c)+' per '+u.s1.split(',')[0]+'. '+u.src+'.'+(u.by?' Confirmed with '+u.by+'.':'')+(u.u?' <a href="'+u.u+'" target="_blank" rel="noopener">'+u.u.replace(/^https?:\/\/(www\.)?/,'').split('/')[0]+' &#8599;</a>':'')+'<br><span class="st">'+u.badge+'</span></span></li>';}).join('');
  $('meth').classList.add('on');document.body.style.overflow='hidden';$('meth').querySelector('.mclose').focus();}
 
 /* ---- Instagram share card: drawn on a canvas from the current choice ---- */
@@ -1120,7 +1120,8 @@ function makeCard(){
 function buildCard(){var img=$('cardImg'),dl=$('cardDl');if(!img)return;img.removeAttribute('src');img.alt='Building your card…';
  makeCard().then(function(cv){var u=cv.toDataURL('image/png');img.src=u;img.alt='Share card: '+$('shareTxt').textContent.split('\n')[0];if(dl){dl.href=u;dl.download='make-another-choice.png';}}).catch(function(e){img.alt='The card could not be drawn in this browser.';});}
 var shareFrom=null;
-function openShare(b){shareFrom=b;render();$('share').classList.add('on');document.body.style.overflow='hidden';$('share').querySelector('.mclose').focus();buildCard();}
+function syncStory(){if(!document.documentElement.classList.contains('story'))return;li=0;ui=ui3;var d3=$('dial3');if(d3)pct=+d3.value;['dial','dial2','dial4'].forEach(function(d){if($(d))$(d).value=pct;});var pr=document.querySelectorAll('.presets .tab');for(var i=0;i<pr.length;i++)pr[i].classList.toggle('on',+pr[i].textContent.replace('%','')===pct);build();}
+function openShare(b){shareFrom=b;syncStory();render();$('share').classList.add('on');document.body.style.overflow='hidden';$('share').querySelector('.mclose').focus();buildCard();}
 function closeShare(){$('share').classList.remove('on');document.body.style.overflow='';if(shareFrom)shareFrom.focus();}
 function copyTo(a){try{navigator.clipboard.writeText(copyTxt);}catch(e){}}
 function closeMeth(){$('meth').classList.remove('on');document.body.style.overflow='';if(methFrom)methFrom.focus();}
